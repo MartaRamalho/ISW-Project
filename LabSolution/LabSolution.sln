@@ -8,17 +8,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{9FD0
 		Class1.cs = Class1.cs
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{1D17EABA-CDE2-43E9-9FB4-72025AB7525A}"
-	ProjectSection(SolutionItems) = preProject
-		Class1.cs = Class1.cs
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{5FDDFABD-7F54-487D-8470-45CDAE0685FB}"
-	ProjectSection(SolutionItems) = preProject
-		Class1.cs = Class1.cs
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{6402FBAC-0440-41CC-8689-2F11D8B715BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{38B84928-141C-4177-94FD-47EDB92D6899}"
+	ProjectSection(SolutionItems) = preProject
+		Class4.cs = Class4.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{B517EA75-D72B-4B37-AA35-31E1A59AC6F4}"
+	ProjectSection(SolutionItems) = preProject
+		Class5.cs = Class5.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
