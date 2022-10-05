@@ -8,5 +8,16 @@ namespace Magazine.Entities
 {
     public partial class Person
     {
+        public Person()
+        {
+            CoAuthoredPapers = new List<Paper>;
+        }
+
+        public Person(String id, String name, String surname) : this()
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Surname = surname;
+        }
     }
 }
