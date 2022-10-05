@@ -8,5 +8,18 @@ namespace Magazine.Entities
 {
     public partial class Evaluation
     {
+        public Evaluation() 
+        { 
+        
+        }
+
+        public Evaluation(bool accepted, string comments, DateTime dateTime, int id, Paper paper)
+        {
+            this.Accepted = accepted;
+            this.Comments = comments;
+            this.DateTime = dateTime;
+            this.Id = id;
+            this.Paper = paper;
+        }
     }
 }
