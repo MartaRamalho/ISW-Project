@@ -8,5 +8,16 @@ namespace Magazine.Entities
 {
     public partial class Magazine
     {
+        public Magazine()
+        {
+            Issues = new List<Issue>;
+            Areas = new List<Area>;
+        }
+
+        public Magazine(Magazine ChiefEditor, String Name):this()
+        {
+            this.ChiefEditor = ChiefEditor;
+            this.Name = Name;
+        }
     }
 }
