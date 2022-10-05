@@ -13,7 +13,7 @@ namespace Magazine.Entities
         
         }
 
-        public Evaluation(bool accepted, string comments, DateTime dateTime, int id, Paper paper)
+        public Evaluation(bool accepted, string comments, DateTime dateTime, int id, Paper paper):this()
         {
             this.Accepted = accepted;
             this.Comments = comments;

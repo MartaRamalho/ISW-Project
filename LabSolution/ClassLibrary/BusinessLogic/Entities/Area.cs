@@ -14,7 +14,7 @@ namespace Magazine.Entities
             PublicationPending = new List<Paper>();
             Papers = new List<Paper>();
         }
-        public Area(int id, string name, User editor)
+        public Area(int id, string name, User editor):this()
         {
             this.Id = id;
             this.Name = name;
