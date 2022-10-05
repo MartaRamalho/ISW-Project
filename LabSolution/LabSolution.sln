@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{9FD0
 		Class1.cs = Class1.cs
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{6402FBAC-0440-41CC-8689-2F11D8B715BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagazineLib", "ClassLibrary\MagazineLib.csproj", "{6402FBAC-0440-41CC-8689-2F11D8B715BC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{38B84928-141C-4177-94FD-47EDB92D6899}"
 	ProjectSection(SolutionItems) = preProject
