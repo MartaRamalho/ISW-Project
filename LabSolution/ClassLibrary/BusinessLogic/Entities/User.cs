@@ -8,14 +8,14 @@ namespace Magazine.Entities
 {
     public partial class User : Person
     {
-        public User(){ //Falta la llamada al constructor padre?? :base(.....) que no se si aquí hace falta
+        public User(){ 
             
             MainAuthoredPapers = new List<Paper>();
         }
 
         public User(String id, String name,String surname, bool alerted, String areasOfInterest, 
             String email, String login, String password, 
-            Area area, Magazine magazine)/*:base(id,name,surname)*/ {
+            Area area, Magazine magazine):base(id,name,surname) {
 
             this.Alerted = alerted;
             this.AreasOfInterest = areasOfInterest;
@@ -24,6 +24,7 @@ namespace Magazine.Entities
             this.Password = password;
             this.Area = area;
             this.Magazine = magazine;
+            
         }
     }
 }
