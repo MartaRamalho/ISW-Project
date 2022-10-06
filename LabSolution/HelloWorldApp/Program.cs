@@ -3,13 +3,13 @@ List<string> nationalities;
 void initList()
 {
     nationalities = new List<string>()
- {
- "Australian",
- "Mongolian",
- "Russian",
- "Austrian",
- "Brazilian"
- };
+     {
+         "Australian",
+         "Mongolian",
+         "Russian",
+         "Austrian",
+         "Brazilian"
+     };
 }
 initList();
 nationalities.Sort();
