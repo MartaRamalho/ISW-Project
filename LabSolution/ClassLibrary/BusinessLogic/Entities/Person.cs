@@ -10,7 +10,7 @@ namespace Magazine.Entities
     {
         public Person()
         {
-            CoAuthoredPapers = new List<Paper>;
+            CoAuthoredPapers = new List<Paper>();
         }
 
         public Person(String id, String name, String surname) : this()

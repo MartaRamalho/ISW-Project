@@ -30,36 +30,36 @@ namespace Magazine.Entities
 
 
         // Links and references to other classes
-        public User Responsible
+        public virtual User Responsible
         {
             get;
             set;
         }
 
-        public Area BelongingArea
+        public virtual Area BelongingArea
         {
             get;
             set;
         }
-        public Area ?EvaluationPendingArea
-        {
-            get;
-            set;
-        }
-
-        public Area ?PublicationPendingArea
+        public virtual Area ?EvaluationPendingArea
         {
             get;
             set;
         }
 
-        public Issue ?Issue
+        public virtual Area ?PublicationPendingArea
         {
             get;
             set;
         }
 
-        public Evaluation ?Evaluation
+        public virtual Issue ?Issue
+        {
+            get;
+            set;
+        }
+
+        public virtual Evaluation ?Evaluation
         {
             get;
             set;
