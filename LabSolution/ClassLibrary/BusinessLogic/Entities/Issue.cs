@@ -10,7 +10,7 @@ namespace Magazine.Entities
     {
         public Issue()
         {
-            PublishedPapers = new List<Paper>;
+            PublishedPapers = new List<Paper>();
         }
 
         public Issue(Magazine Magazine, int Number, DateTime PublicationDate):this()

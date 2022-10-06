@@ -10,8 +10,8 @@ namespace Magazine.Entities
     {
         public Magazine()
         {
-            Issues = new List<Issue>;
-            Areas = new List<Area>;
+            Issues = new List<Issue>();
+            Areas = new List<Area>();
         }
 
         public Magazine(Magazine ChiefEditor, String Name):this()
