@@ -1,2 +1,19 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿
+List<string> nationalities;
+void initList()
+{
+    nationalities = new List<string>()
+ {
+ "Australian",
+ "Mongolian",
+ "Russian",
+ "Austrian",
+ "Brazilian"
+ };
+}
+initList();
+nationalities.Sort();
+foreach (string nationality in nationalities)
+{
+    Console.WriteLine(nationality);
+}
