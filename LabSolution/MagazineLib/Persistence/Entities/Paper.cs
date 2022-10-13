@@ -41,25 +41,25 @@ namespace Magazine.Entities
             get;
             set;
         }
-        public virtual Area ?EvaluationPendingArea
+        public virtual Area EvaluationPendingArea
         {
             get;
             set;
         }
 
-        public virtual Area ?PublicationPendingArea
+        public virtual Area PublicationPendingArea
         {
             get;
             set;
         }
 
-        public virtual Issue ?Issue
+        public virtual Issue Issue
         {
             get;
             set;
         }
 
-        public virtual Evaluation ?Evaluation
+        public virtual Evaluation Evaluation
         {
             get;
             set;

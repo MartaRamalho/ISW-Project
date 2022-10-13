@@ -66,7 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MagazineLib.csproj">
-      <Project>{6402fbac-0440-41cc-8689-2f11d8b715bc}</Project>
+      <Project>{2dcda42d-e64e-4ca5-9d1e-33543854c43f}</Project>
       <Name>MagazineLib</Name>
     </ProjectReference>
   </ItemGroup>
