@@ -65,7 +65,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LabSolution\ClassLibrary\MagazineLib.csproj">
+    <ProjectReference Include="..\MagazineLib.csproj">
       <Project>{6402fbac-0440-41cc-8689-2f11d8b715bc}</Project>
       <Name>MagazineLib</Name>
     </ProjectReference>
