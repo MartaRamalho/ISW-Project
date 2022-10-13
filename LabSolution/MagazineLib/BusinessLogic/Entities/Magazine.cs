@@ -14,7 +14,7 @@ namespace Magazine.Entities
             Areas = new List<Area>();
         }
 
-        public Magazine(User ChiefEditor, String Name):this()
+        public Magazine(String Name, User ChiefEditor) :this()
         {
             this.ChiefEditor = ChiefEditor;
             this.Name = Name;
