@@ -20,7 +20,7 @@ namespace Magazine.Entities
             set;
         }
         
-        public DateTime DateTime
+        public DateTime Date
         {
             get;
             set;
@@ -32,10 +32,5 @@ namespace Magazine.Entities
             set;
         }
 
-        public virtual Paper Paper
-        { 
-            get;
-            set;
-        }
     }
 }

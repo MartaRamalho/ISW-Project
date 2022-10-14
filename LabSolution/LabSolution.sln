@@ -18,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorldApp", "HelloWorld
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagazineLib", "MagazineLib\MagazineLib.csproj", "{2DCDA42D-E64E-4CA5-9D1E-33543854C43F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagazineObjectDesignTests", "MagazineLib\MagazineObjectDesignTests\MagazineObjectDesignTests.csproj", "{4011CF53-3F2A-4236-8013-3531C2160163}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagazineObjectDesignTests", "MagazineObjectDesignTests\MagazineObjectDesignTests.csproj", "{4011CF53-3F2A-4236-8013-3531C2160163}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

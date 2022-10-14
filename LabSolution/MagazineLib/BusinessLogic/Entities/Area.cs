@@ -14,10 +14,11 @@ namespace Magazine.Entities
             PublicationPending = new List<Paper>();
             Papers = new List<Paper>();
         }
-        public Area(string name, User editor):this()
+        public Area(string name, User editor, Magazine magazine):this()
         {
             this.Name = name;
             this.Editor = editor;
+            this.Magazine = magazine;
         }
         
     }

@@ -65,7 +65,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MagazineLib.csproj">
+    <ProjectReference Include="..\MagazineLib\MagazineLib.csproj">
       <Project>{2dcda42d-e64e-4ca5-9d1e-33543854c43f}</Project>
       <Name>MagazineLib</Name>
     </ProjectReference>

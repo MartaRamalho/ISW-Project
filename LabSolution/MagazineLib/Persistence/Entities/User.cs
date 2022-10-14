@@ -8,6 +8,7 @@ namespace Magazine.Entities
 {
     public partial class User : Person
     {
+        public String ID { get; set; }
         public bool Alerted { get; set; }
         public String AreasOfInterest { get; set; }
         public String Email { get; set; }
