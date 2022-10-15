@@ -8,7 +8,9 @@ void initList()
          "Mongolian",
          "Russian",
          "Austrian",
-         "Brazilian"
+         "Brazilian",
+         "Italian",
+         "Portuguese"
      };
 }
 initList();
