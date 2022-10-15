@@ -15,6 +15,7 @@ namespace Magazine.Entities
 
         public Person(String id, String name, String surname) : this()
         {
+            // attributes
             this.Id = id;
             this.Name = name;
             this.Surname = surname;

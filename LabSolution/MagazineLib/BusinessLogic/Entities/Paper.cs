@@ -10,16 +10,30 @@ namespace Magazine.Entities
     {
         public Paper()
         {
-            CoAuthors = new List<Person>();
+            this.CoAuthors = new List<Person>();
         }
 
         public Paper(String title, DateTime uploadDate, Area belongingArea, User responsible) : this()
         {
+            // attributes
             this.Title = title;
-            this.BelongingArea = belongingArea;
-            this.Responsible = responsible;
             this.UploadDate = uploadDate;
-            CoAuthors.Add(Responsible);
+
+            // person links
+            this.CoAuthors.Add(Responsible);
+
+            // area links
+            this.BelongingArea = belongingArea;
+            this.EvaluationPendingArea = null;
+            
+            // user links
+            this.Responsible = responsible;
+    
+            // evaluation links
+            this.Evaluation = null;
+
+            // issue links
+            this.Issue = null;
         }
     }
 }

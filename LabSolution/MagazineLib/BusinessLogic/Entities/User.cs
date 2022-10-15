@@ -22,6 +22,9 @@ namespace Magazine.Entities
             this.Email = email;
             this.Login = login;
             this.Password = password;
+
+            this.Area = null;
+            this.Magazine = null;
             
         }
     }
