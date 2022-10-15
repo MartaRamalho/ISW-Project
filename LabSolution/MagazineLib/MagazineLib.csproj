@@ -7,7 +7,7 @@
     <ProjectGuid>{2DCDA42D-E64E-4CA5-9D1E-33543854C43F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MagazineLib</RootNamespace>
+    <RootNamespace>Magazine</RootNamespace>
     <AssemblyName>MagazineLib</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -48,7 +48,6 @@
     <Compile Include="BusinessLogic\Entities\Paper.cs" />
     <Compile Include="BusinessLogic\Entities\Person.cs" />
     <Compile Include="BusinessLogic\Entities\User.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Persistence\Entities\Area.cs" />
     <Compile Include="Persistence\Entities\Evaluation.cs" />
     <Compile Include="Persistence\Entities\Issue.cs" />
