@@ -13,7 +13,7 @@ namespace Magazine.Entities
             PublishedPapers = new List<Paper>();
         }
 
-        public Issue(int Number, DateTime PublicationDate, Magazine Magazine) :this()
+        public Issue(int Number, Magazine Magazine) :this()
         {
             this.Magazine = Magazine;
             this.Number = Number;
