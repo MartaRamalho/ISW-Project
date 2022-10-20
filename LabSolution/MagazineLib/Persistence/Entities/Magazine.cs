@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -33,7 +34,7 @@ namespace Magazine.Entities
             get;
             set;
         }
-        [InverseProperty("Magazine")]
+        [Required]
         public virtual User ChiefEditor
         {
             get;
