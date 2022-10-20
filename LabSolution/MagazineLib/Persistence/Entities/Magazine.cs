@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,19 +21,19 @@ namespace Magazine.Entities
             get;
             set;
         }
-
+        [InverseProperty("Magazine")]
         public virtual ICollection<Issue> Issues
         {
             get;
             set;
         }
-
+        [InverseProperty("Magazine")]
         public virtual ICollection<Area> Areas
         {
             get;
             set;
         }
-
+        [InverseProperty("Magazine")]
         public virtual User ChiefEditor
         {
             get;

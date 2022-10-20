@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +44,7 @@ namespace Magazine.Entities
             get;
             set;
         }
-
+        [InverseProperty("Area")]
         public virtual User Editor
         {
             get;
