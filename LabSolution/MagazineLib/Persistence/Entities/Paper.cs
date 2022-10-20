@@ -56,6 +56,7 @@ namespace Magazine.Entities
             get;
             set;
         }
+
         [InverseProperty("PublishedPapers")]
         public virtual Issue Issue
         {
@@ -69,6 +70,7 @@ namespace Magazine.Entities
             get;
             set;
         }
+
         [InverseProperty("CoAuthoredPapers")]
         public virtual ICollection<Person> CoAuthors
         {

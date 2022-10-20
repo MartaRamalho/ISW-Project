@@ -45,7 +45,7 @@ namespace Magazine.Entities
             get;
             set;
         }
-        [[Required]
+        [Required]
         public virtual User Editor
         {
             get;
