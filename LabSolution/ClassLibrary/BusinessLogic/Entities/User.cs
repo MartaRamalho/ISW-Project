@@ -9,7 +9,6 @@ namespace Magazine.Entities
     public partial class User : Person
     {
         public User(){ 
-            
             MainAuthoredPapers = new List<Paper>();
         }
 
