@@ -66,6 +66,10 @@
     <Compile Include="Persistence\Entities\Paper.cs" />
     <Compile Include="Persistence\Entities\Person.cs" />
     <Compile Include="Persistence\Entities\User.cs" />
+    <Compile Include="Persistence\EntityFrameworkImp\DbContextISW.cs" />
+    <Compile Include="Persistence\EntityFrameworkImp\EntityFrameworkDAL.cs" />
+    <Compile Include="Persistence\EntityFrameworkImp\IDAL.cs" />
+    <Compile Include="Persistence\EntityFrameworkImp\MagazineDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
