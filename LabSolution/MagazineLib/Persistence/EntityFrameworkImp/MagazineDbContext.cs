@@ -46,7 +46,7 @@ namespace Magazine.Persistence
             // al borrar primero Area. Este borrado en cascada provoca error en el test de persistencia TestPaper
             // cuando base.RemoveAllData() intenta borrar entidades ya marcadas como deleted
             // base.RemoveAllData();
-            
+
             // Para solucionar el error hacemos el borrado explícitamente en un orden concreto
             // dejando Area para el final cuando todo lo demás se ha borrado
             Set<Person>().RemoveRange(Set<Person>());
@@ -57,6 +57,14 @@ namespace Magazine.Persistence
             Set<Magazine.Entities.Magazine>().RemoveRange(Set<Magazine.Entities.Magazine>());
             Set<Area>().RemoveRange(Set<Area>());
             SaveChanges();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Paper>()
+                        .HasRequired(p => p.Responsible)
+                        .WithMany()
+                        .WillCascadeOnDelete(false);
         }
 
         // Sometimes it is needed to clear some relationships explicitly 

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Reflection;
 using System.Data.Entity.Validation;
+using Magazine.Entities;
 
 namespace Magazine.Persistence
 {
