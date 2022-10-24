@@ -20,6 +20,5 @@ namespace Magazine.Entities
             this.Editor = editor;
             this.Magazine = magazine;
         }
-        
     }
 }
