@@ -17,7 +17,7 @@ namespace Magazine.Entities
             set;
         }
 
-        public String Name
+        public string Name
         {
             get;
             set;

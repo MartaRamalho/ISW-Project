@@ -21,19 +21,19 @@ namespace Magazine.Entities
             get;
             set;
         }
-
+        [InverseProperty("BelongingArea")]
         public virtual ICollection<Paper> Papers
         {
             get;
             set;
         }
-
+        [InverseProperty("EvaluationPendingArea")]
         public virtual ICollection<Paper> EvaluationPending
         {
             get;
             set;
         }
-
+        [InverseProperty("PublicationPendingArea")]
         public virtual  ICollection<Paper> PublicationPending
         {
             get;

@@ -63,8 +63,7 @@ namespace Magazine.Entities
             get;
             set;
         }
-        
-        [Required]
+
         public virtual Evaluation Evaluation
         {
             get;

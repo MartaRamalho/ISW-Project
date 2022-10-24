@@ -24,16 +24,11 @@ namespace Magazine.Entities
 
             // area links
             this.BelongingArea = belongingArea;
-            this.EvaluationPendingArea = null;
             
             // user links
             this.Responsible = responsible;
-    
-            // evaluation links
-            this.Evaluation = null;
-
-            // issue links
-            this.Issue = null;
+            this.CoAuthors = new List<Person>();
+            this.CoAuthors.Add(responsible);
         }
     }
 }

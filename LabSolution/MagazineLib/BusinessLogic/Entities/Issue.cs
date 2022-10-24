@@ -17,7 +17,7 @@ namespace Magazine.Entities
         {
             this.Magazine = Magazine;
             this.Number = Number;
-            this.PublicationDate = PublicationDate;
+            this.PublicationDate = null;
         }
     }
 }

@@ -15,15 +15,11 @@ namespace Magazine.Entities
         public User(String id, String name,String surname, bool alerted, String areasOfInterest, 
             String email, String login, String password):base(id,name,surname) {
             MainAuthoredPapers = new List<Paper>();
-            this.ID = id;
             this.Alerted = alerted;
             this.AreasOfInterest = areasOfInterest;
             this.Email = email;
             this.Login = login;
             this.Password = password;
-
-            this.Area = null;
-            this.Magazine = null;
             
         }
     }

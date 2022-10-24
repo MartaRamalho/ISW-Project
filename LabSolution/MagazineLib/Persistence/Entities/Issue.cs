@@ -20,7 +20,7 @@ namespace Magazine.Entities
             set;
         }
 
-        public DateTime PublicationDate
+        public DateTime? PublicationDate
         {
             get;
             set;
