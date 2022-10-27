@@ -112,6 +112,7 @@ namespace DBTest
             dal.Commit();
 
             Console.WriteLine("Finished");
+            Console.ReadKey();
         }
 
     }
