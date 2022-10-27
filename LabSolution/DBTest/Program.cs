@@ -86,15 +86,11 @@ namespace DBTest
 
             Magazine.Entities.Magazine m = new Magazine.Entities.Magazine("Revista Universitaria", u1);
             u1.Magazine = m;
-            u2.Magazine = m;
-            u3.Magazine = m;
             dal.Insert<Magazine.Entities.Magazine>(m);
             dal.Commit();
 
             Console.WriteLine("Nombre de la revista: " + m.Name);
             Console.WriteLine("  Editor de la revista: " + m.ChiefEditor.Name + " " + m.ChiefEditor.Surname);
-
-            Console.ReadKey();
 
             Magazine.Entities.Issue i = new Magazine.Entities.Issue(1, m);
             m.Issues.Add(i);
@@ -114,6 +110,8 @@ namespace DBTest
             area.Papers.Add(p);
             dal.Insert<Magazine.Entities.Paper>(p);
             dal.Commit();
+
+            Console.WriteLine("Finished");
         }
 
     }
