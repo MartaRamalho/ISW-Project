@@ -86,8 +86,6 @@ namespace DBTest
 
             Magazine.Entities.Magazine m = new Magazine.Entities.Magazine("Revista Universitaria", u1);
             u1.Magazine = m;
-            u2.Magazine = m;
-            u3.Magazine = m;
             dal.Insert<Magazine.Entities.Magazine>(m);
             dal.Commit();
 
