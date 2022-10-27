@@ -76,9 +76,18 @@ namespace DBTest
             dal.Insert<User>(u1);
             dal.Commit();
 
+            User u2 = new User("56", "Juan", "TheEditor", false, "ninguna", "jdiaz@gmail.com", "theeditor", "1234");
+            dal.Insert<User>(u2);
+            dal.Commit();
+
+            User u3 = new User("78", "Alejandra", "TheResponsible", false, "ninguna", "alejmor@gmail.com", "theresponsible", "1234");
+            dal.Insert<User>(u3);
+            dal.Commit();
+
             Magazine.Entities.Magazine m = new Magazine.Entities.Magazine("Revista Universitaria", u1);
             u1.Magazine = m;
-
+            u2.Magazine = m;
+            u3.Magazine = m;
             dal.Insert<Magazine.Entities.Magazine>(m);
             dal.Commit();
 
@@ -87,8 +96,24 @@ namespace DBTest
 
             Console.ReadKey();
 
-            // Populate here the rest of the database with data
+            Magazine.Entities.Issue i = new Magazine.Entities.Issue(1, m);
+            m.Issues.Add(i);
+            dal.Insert<Magazine.Entities.Issue>(i);
+            dal.Commit();
 
+            Magazine.Entities.Area area = new Magazine.Entities.Area("Animals", u2, m);
+            m.Areas.Add(area);
+            u2.Area = area;
+            dal.Insert<Magazine.Entities.Area>(area);
+            dal.Commit();
+
+            Magazine.Entities.Paper p = new Magazine.Entities.Paper("Wild Animals", DateTime.Now, area, u3);
+            u3.MainAuthoredPapers.Add(p);
+            p.EvaluationPendingArea = area;
+            area.EvaluationPending.Add(p);
+            area.Papers.Add(p);
+            dal.Insert<Magazine.Entities.Paper>(p);
+            dal.Commit();
         }
 
     }
