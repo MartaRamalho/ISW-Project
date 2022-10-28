@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Magazine.Entities
 {
+
     public partial class Issue
     {
         public Issue()
