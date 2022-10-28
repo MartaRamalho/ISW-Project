@@ -24,8 +24,6 @@ namespace DBTest
             {
                 printError(e);
             }
-            Console.WriteLine("\nPulse una tecla para salir");
-            Console.ReadLine();
         }
 
         static void printError(Exception e)
@@ -112,7 +110,6 @@ namespace DBTest
             dal.Commit();
 
             Console.WriteLine("Finished");
-            Console.ReadKey();
         }
 
     }
