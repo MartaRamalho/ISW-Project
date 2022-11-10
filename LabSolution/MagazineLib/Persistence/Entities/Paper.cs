@@ -32,13 +32,14 @@ namespace Magazine.Entities
 
 
         // Links and references to other classes
-        [InverseProperty("MainAuthoredPapers")]
+        [Required]
         public virtual User Responsible
         {
             get;
             set;
         }
         [InverseProperty("Papers")]
+        [Required]
         public virtual Area BelongingArea
         {
             get;
@@ -57,7 +58,6 @@ namespace Magazine.Entities
             set;
         }
 
-        [InverseProperty("PublishedPapers")]
         public virtual Issue Issue
         {
             get;
@@ -70,7 +70,6 @@ namespace Magazine.Entities
             set;
         }
 
-        [InverseProperty("CoAuthoredPapers")]
         public virtual ICollection<Person> CoAuthors
         {
             get;

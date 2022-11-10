@@ -22,13 +22,13 @@ namespace Magazine.Entities
             get;
             set;
         }
-        [InverseProperty("Magazine")]
+
         public virtual ICollection<Issue> Issues
         {
             get;
             set;
         }
-        [InverseProperty("Magazine")]
+
         public virtual ICollection<Area> Areas
         {
             get;
