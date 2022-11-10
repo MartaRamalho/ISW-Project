@@ -27,7 +27,6 @@ namespace Magazine.Entities
             
             // user links
             this.Responsible = responsible;
-            this.CoAuthors = new List<Person>();
             this.CoAuthors.Add(responsible);
         }
     }
