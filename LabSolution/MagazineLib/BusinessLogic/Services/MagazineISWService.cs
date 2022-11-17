@@ -25,6 +25,7 @@ namespace Magazine.Services
         // - submitted paper responsible author is logged in user
         private User loggedUser;
 
+
         private Entities.Magazine magazine;
         public  MagazineISWService(IDAL dal){
             this.dal = dal;
@@ -80,7 +81,16 @@ namespace Magazine.Services
         }
 
         #region User
+        //Create a new user in the system
+        public void RegisterUser(string id, string name, string surnames, string email, string fieldsOfIntereset, string username, string password, bool wantsToReceive)
+        {
+            User newUser = new User(id, name, surnames, wantsToReceive, fieldsOfIntereset, email, username, password);
+        }
 
+        public void Login(string name, string password) 
+        { 
+            
+        }
 
         #endregion
 
