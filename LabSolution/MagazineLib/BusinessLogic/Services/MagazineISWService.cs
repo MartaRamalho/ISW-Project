@@ -82,7 +82,7 @@ namespace Magazine.Services
 
         #region User
         //Create a new user in the system
-        public void RegisterUser(string id, string name, string surnames, string email, string fieldsOfIntereset, string username, string password, bool wantsToReceive)
+        public void RegisterUser(string id, string name, string surnames, bool wantsToReceive, string fieldsOfIntereset, string email, string username, string password)
         {
             List<User> users = dal.GetAll<User>().ToList();
             foreach (User user in users)
