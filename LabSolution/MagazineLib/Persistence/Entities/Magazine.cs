@@ -40,5 +40,16 @@ namespace Magazine.Entities
             get;
             set;
         }
+
+        public Area getAreaById(int id)
+        {
+            foreach (Area area in Areas)
+            {
+                if (area.Id == id) return area;
+            }
+            return null;
+        }
     }
+
+    
 }

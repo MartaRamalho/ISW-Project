@@ -157,7 +157,6 @@ namespace Magazine.Services
         /// </returns>
         int AddArea(string areaName, string editorId);
 
-
         #endregion
 
         #region Magazine

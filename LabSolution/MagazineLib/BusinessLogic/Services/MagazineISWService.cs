@@ -100,6 +100,8 @@ namespace Magazine.Services
         {
             ValidateLoggedUser(true);
             Area area = magazine.getAreaById(areaId);
+            if(area== null) { throw new ServiceException("Area not found."); }
+
             return 1;
         }
 
@@ -154,6 +156,7 @@ namespace Magazine.Services
             return area.Id;
         }
 
+        
         #endregion
 
         #region Magazine
