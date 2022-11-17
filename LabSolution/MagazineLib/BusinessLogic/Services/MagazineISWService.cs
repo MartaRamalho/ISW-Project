@@ -90,7 +90,7 @@ namespace Magazine.Services
                 if (user.Login.Equals(username))
                 {
                     //No registration possible, LAUNCH EXECPTION
-                    throw 
+                    throw new ServiceException("Username already in use");
                 }
             }
             //No user found with id, then we create the user and we push it to dal
