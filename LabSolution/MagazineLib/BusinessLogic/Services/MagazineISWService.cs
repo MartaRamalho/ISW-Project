@@ -82,14 +82,36 @@ namespace Magazine.Services
 
         #region User
         //Create a new user in the system
-        public void RegisterUser(string id, string name, string surnames, string email, string fieldsOfIntereset, string username, string password, bool wantsToReceive)
+        public void RegisterUser(string id, string name, string surnames, bool wantsToReceive, string fieldsOfIntereset, string email, string username, string password)
         {
-            User newUser = new User(id, name, surnames, wantsToReceive, fieldsOfIntereset, email, username, password);
+            List<User> users = dal.GetAll<User>().ToList();
+            foreach (User user in users)
+            {
+                if (user.Login.Equals(username))
+                {
+                    //No registration possible, LAUNCH EXECPTION
+                    throw new ServiceException("Username already in use");
+                }
+            }
+            //No user found with id, then we create the user and we push it to dal
+            dal.Insert<User>(new User(id, name, surnames, wantsToReceive, fieldsOfIntereset, email, username, password));
         }
 
-        public void Login(string name, string password) 
-        { 
-            
+        public void Login(string login, string password) 
+        {
+            List<User> users = dal.GetAll<User>().ToList();
+            //Check if the user is in the users' list
+            foreach (User u in users)
+            {
+                if (u.Login.Equals(login) && u.Password.Equals(password)) 
+                {
+                    loggedUser = u;
+                    break;
+                    //Creates a new session for the user        
+                }  
+            }
+            //No user found if the program arrives here
+            throw new ServiceException("Login incorrect. Username or password may be wrong");            
         }
 
         #endregion
@@ -110,6 +132,10 @@ namespace Magazine.Services
 
         #region Issue
 
+        public void AddIssue()
+        {
+
+        }
 
         #endregion
 
