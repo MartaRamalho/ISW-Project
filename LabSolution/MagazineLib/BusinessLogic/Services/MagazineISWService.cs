@@ -111,7 +111,7 @@ namespace Magazine.Services
                 }  
             }
             //No user found if the program arrives here
-            
+            throw new ServiceException("Login incorrect. Username or password may be wrong");            
         }
 
         #endregion
