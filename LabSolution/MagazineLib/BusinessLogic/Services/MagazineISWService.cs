@@ -81,11 +81,33 @@ namespace Magazine.Services
         //Create a new user in the system
         public void RegisterUser(string id, string name, string surnames, string email, string fieldsOfIntereset, string username, string password, bool wantsToReceive)
         {
-            User newUser = new User(id, name, surnames, wantsToReceive, fieldsOfIntereset, email, username, password);
+            List<User> users = dal.GetAll<User>().ToList();
+            foreach (User user in users)
+            {
+                if (user.Login.Equals(username))
+                {
+                    //No registration possible, LAUNCH EXECPTION
+                    throw 
+                }
+            }
+            //No user found with id, then we create the user and we push it to dal
+            dal.Insert<User>(new User(id, name, surnames, wantsToReceive, fieldsOfIntereset, email, username, password));
         }
 
-        public void Login(string name, string password) 
-        { 
+        public void Login(string login, string password) 
+        {
+            User[] users = dal.GetAll<User>().ToList().ToArray();
+            //Check if the user is in the users' list
+            User user = null;
+            foreach (User user in users)
+            {
+                if (users[i].Login.Equals(login) && users[i].Password.Equals(password)) 
+                {
+                    user = users[i];
+                    //Creates a new session for the user
+                }  
+            }
+            //No user found if the program arrives here
             
         }
 
@@ -98,6 +120,10 @@ namespace Magazine.Services
 
         #region Issue
 
+        public void AddIssue()
+        {
+
+        }
 
         #endregion
 
