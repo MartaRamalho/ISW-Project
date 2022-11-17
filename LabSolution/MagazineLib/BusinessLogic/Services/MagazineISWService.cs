@@ -99,15 +99,15 @@ namespace Magazine.Services
 
         public void Login(string login, string password) 
         {
-            User[] users = dal.GetAll<User>().ToList().ToArray();
+            List<User> users = dal.GetAll<User>().ToList();
             //Check if the user is in the users' list
-            User user = null;
-            foreach (User user in users)
+            foreach (User u in users)
             {
-                if (users[i].Login.Equals(login) && users[i].Password.Equals(password)) 
+                if (u.Login.Equals(login) && u.Password.Equals(password)) 
                 {
-                    user = users[i];
-                    //Creates a new session for the user
+                    loggedUser = u;
+                    break;
+                    //Creates a new session for the user        
                 }  
             }
             //No user found if the program arrives here
