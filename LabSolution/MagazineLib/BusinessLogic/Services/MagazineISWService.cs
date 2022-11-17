@@ -74,12 +74,24 @@ namespace Magazine.Services
             Logout();
         }
 
+        public void Commit()
+        {
+            dal.Commit();
+        }
+
         #region User
 
 
         #endregion
 
         #region Paper
+
+        public int SubmitPaper(int areaId, string title, DateTime uploadDate)
+        {
+            ValidateLoggedUser(true);
+            Area area = magazine.getAreaById(areaId);
+            return 1;
+        }
 
         #endregion
 
