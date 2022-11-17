@@ -129,7 +129,6 @@ namespace Magazine.Services
 
         #endregion
 
-
         #region Issue
 
         public void AddIssue()
