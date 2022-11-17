@@ -123,7 +123,7 @@ namespace Magazine.Services
             ValidateLoggedUser(true);
             Area area = magazine.getAreaById(areaId);
             if(area== null) { throw new ServiceException("Area not found."); }
-
+            area.addPaper(new Paper(title, uploadDate, area, loggedUser));
             return 1;
         }
 
@@ -132,10 +132,6 @@ namespace Magazine.Services
 
         #region Issue
 
-        public void AddIssue()
-        {
-
-        }
 
         #endregion
 

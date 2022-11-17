@@ -51,5 +51,10 @@ namespace Magazine.Entities
             get;
             set;
         }
+
+        public void addPaper(Paper paper)
+        {
+            Papers.Add(paper);
+        }
     }
 }

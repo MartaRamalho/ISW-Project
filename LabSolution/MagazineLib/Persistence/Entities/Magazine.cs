@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Magazine.Persistence;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -49,6 +50,8 @@ namespace Magazine.Entities
             }
             return null;
         }
+
+        
     }
 
     
