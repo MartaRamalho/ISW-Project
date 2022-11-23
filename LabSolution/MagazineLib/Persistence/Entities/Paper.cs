@@ -75,5 +75,6 @@ namespace Magazine.Entities
             get;
             set;
         }
+
     }
 }

@@ -122,9 +122,26 @@ namespace Magazine.Services
         {
             ValidateLoggedUser(true);
             Area area = magazine.getAreaById(areaId);
-            if(area== null) { throw new ServiceException("Area not found."); }
-            area.addPaper(new Paper(title, uploadDate, area, loggedUser));
-            return 1;
+            if(area == null) { 
+                throw new ServiceException("Area not found.");
+            }
+            Paper submittedPapper = new Paper(title, uploadDate, area, loggedUser);
+            area.addPaper(submittedPapper);
+            Commit();
+            return submittedPapper.Id;
+        }
+
+        public void EvaluatePaper(bool accepted, string comments, DateTime date, int paperId)
+        {
+            ValidateLoggedUser(true);
+            Paper paperToEvaluate = magazine.getPaperById(paperId);
+            paperToEvaluate.Evaluation = new Evaluation(accepted, comments, date);
+            Commit();
+        }
+        public bool isEvaluationPending(int paperId)
+        {
+            Paper paper = magazine.getPaperById(paperId);
+            return paper.Evaluation == null;
         }
 
         #endregion

@@ -51,7 +51,31 @@ namespace Magazine.Entities
             return null;
         }
 
-        
+        public Area GetAreaByName(String name)
+        {
+            foreach (Area area in Areas)
+            {
+                if (area.Name == name) return area;
+            }
+            return null;
+        }
+
+        public void AddArea(Area area)
+        {
+            Areas.Add(area);
+        }
+
+        public Paper getPaperById(int id)
+        {
+            foreach (Area area in Areas)
+            {
+                foreach (Paper paper in area.Papers)
+                {
+                    if (paper.Id == id) return paper;
+                }
+            }
+            return null;
+        }
     }
 
     
