@@ -98,7 +98,7 @@ namespace Magazine.Services
             Commit();
         }
 
-        public void Login(string login, string password) 
+        public string Login(string login, string password) 
         {
             List<User> users = dal.GetAll<User>().ToList();
             //Check if the user is in the users' list
@@ -108,7 +108,7 @@ namespace Magazine.Services
                 {
                     ValidateLoggedUser(false);
                     loggedUser = u;
-                    break;
+                    return u.Id;
                     //Creates a new session for the user        
                 }  
             }
