@@ -105,6 +105,7 @@ namespace Magazine.Services
             {
                 if (u.Login.Equals(login) && u.Password.Equals(password)) 
                 {
+                    ValidateLoggedUser(false);
                     loggedUser = u;
                     break;
                     //Creates a new session for the user        
@@ -189,8 +190,10 @@ namespace Magazine.Services
             Paper paper = magazine.GetPaperById(paperId);
             if (isPublicationPending(paperId))
             {
-
-            }
+                Area pubPend = paper.PublicationPendingArea;
+                pubPend.PublicationPending.Remove(paper);
+                paper.PublicationPendingArea = null;           
+             }
             throw new ServiceException(resourceManager.GetString("PaperAlreadyPublished"));
         }
 
@@ -201,7 +204,8 @@ namespace Magazine.Services
                 Area pubPend = paper.PublicationPendingArea;
                 pubPend.PublicationPending.Add(paper);
             }
-            
+            throw new ServiceException(resourceManager.GetString("PaperNotPublished"));
+
         }
 
         public bool isPublicationPending(int paperId)
@@ -232,7 +236,9 @@ namespace Magazine.Services
             // validate magazine exists
             if (magazine == null) throw new ServiceException(resourceManager.GetString("MagazineNotExists"));
 
-
+            Issue issue = new Issue(number, magazine);
+            magazine.Issues.Add(issue); 
+            return issue.Id;
         }
 
         #endregion
