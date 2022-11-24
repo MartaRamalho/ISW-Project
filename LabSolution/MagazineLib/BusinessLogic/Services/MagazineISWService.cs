@@ -191,6 +191,7 @@ namespace Magazine.Services
         public void PublishPaper(int paperId)
         {
             Paper paper = magazine.GetPaperById(paperId);
+            //Check if the paper is pending of publication
             if (isPublicationPending(paperId))
             {
                 Area pubPend = paper.PublicationPendingArea;
@@ -201,6 +202,7 @@ namespace Magazine.Services
         }
 
         public void UnPublishPaper(int paperId) {
+            //Check that the paper is published
             if (!isPublicationPending(paperId))
             {
                 Paper paper = magazine.GetPaperById(paperId);
