@@ -114,6 +114,21 @@ namespace Magazine.Services
             throw new ServiceException("Login incorrect. Username or password may be wrong");            
         }
 
+        public void RegisterPerson(String id, String name, String surname)
+        {
+            List<Person> people = dal.GetAll<Person>().ToList();
+            foreach (Person person in people)
+            {
+                if (person.Id == id)
+                {
+                    //No registration possible, LAUNCH EXECPTION
+                    throw new ServiceException("Person already registered");
+                }
+            }
+            //No user found with id, then we create the user and we push it to dal
+            dal.Insert<Person>(new Person(id, name, surname));
+        }
+
         public void Logout()
         {
             ValidateLoggedUser(true);
@@ -137,20 +152,7 @@ namespace Magazine.Services
             return submittedPapper.Id;
         }
 
-        public void RegisterPerson(String id, String name, String surname)
-        {
-            List<Person> people = dal.GetAll<Person>().ToList();
-            foreach (Person person in people)
-            {
-                if (person.Id == id)
-                {
-                    //No registration possible, LAUNCH EXECPTION
-                    throw new ServiceException("Person already registered");
-                }
-            }
-            //No user found with id, then we create the user and we push it to dal
-            dal.Insert<Person>(new Person(id, name, surname));
-        }
+        
 
         public void EvaluatePaper(bool accepted, string comments, DateTime date, int paperId)
         {
@@ -171,6 +173,17 @@ namespace Magazine.Services
             return paper.Evaluation == null;
         }
 
+        public void AddCoAuthors(Person person, int paperId)
+        {
+            Paper paper = magazine.GetPaperById(paperId);
+            List<Person> coAuthors = paper.CoAuthors.ToList();
+            if (coAuthors.Count >= 4)
+            {
+                throw new ServiceException(resourceManager.GetString("MaximumNumberOfCoAuthors");
+            }
+            coAuthors.Add(person);
+        }
+
         public void PublishPaper(int paperId)
         {
             Paper paper = magazine.GetPaperById(paperId);
@@ -184,7 +197,7 @@ namespace Magazine.Services
         public void UnPublishPaper(int paperId) {
             if (!isPublicationPending(paperId))
             {
-                Paper paper = magazine.getPaperById(paperId);
+                Paper paper = magazine.GetPaperById(paperId);
                 Area pubPend = paper.PublicationPendingArea;
                 pubPend.PublicationPending.Add(paper);
             }
