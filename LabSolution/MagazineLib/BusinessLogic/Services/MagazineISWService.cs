@@ -201,7 +201,8 @@ namespace Magazine.Services
             if (!isPublicationPending(paperId))
             {
                 Paper paper = magazine.GetPaperById(paperId);
-                Area pubPend = paper.PublicationPendingArea;
+                Area pubPend = paper.BelongingArea;
+                paper.PublicationPendingArea = pubPend;
                 pubPend.PublicationPending.Add(paper);
             }
             throw new ServiceException(resourceManager.GetString("PaperNotPublished"));
