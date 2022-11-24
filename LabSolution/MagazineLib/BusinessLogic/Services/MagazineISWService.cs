@@ -138,6 +138,10 @@ namespace Magazine.Services
             loggedUser = null;
         }
 
+        public bool IsChiefEditor()
+        {
+            return loggedUser.Magazine != null;
+        }
         #endregion
 
         #region Paper
@@ -190,6 +194,11 @@ namespace Magazine.Services
 
         public void PublishPaper(int paperId)
         {
+            ValidateLoggedUser(true);
+            if (!IsChiefEditor())
+            {
+                throw new ServiceException("User not allowed");
+            }
             Paper paper = magazine.GetPaperById(paperId);
             if (isPublicationPending(paperId))
             {
@@ -201,6 +210,11 @@ namespace Magazine.Services
         }
 
         public void UnPublishPaper(int paperId) {
+            ValidateLoggedUser(true);
+            if (!IsChiefEditor())
+            {
+                throw new ServiceException("User not allowed");
+            }
             if (!isPublicationPending(paperId))
             {
                 Paper paper = magazine.GetPaperById(paperId);
@@ -228,7 +242,11 @@ namespace Magazine.Services
         public IEnumerable<Paper> ListAllPapers() 
         {
             ValidateLoggedUser(true);
-            if(loggedUser.Magazine == null) throw new ServiceException(resourceManager.GetString("InvalidListAllPapersUser"));
+            if (!IsChiefEditor())
+            {
+                throw new ServiceException("User not allowed");
+            }
+            if (loggedUser.Magazine == null) throw new ServiceException(resourceManager.GetString("InvalidListAllPapersUser"));
             //falta hacer la lsita con los papers
             return null;
         }
@@ -239,9 +257,13 @@ namespace Magazine.Services
 
         public int AddIssue(int number)
         {
+
             // validate logged user
             ValidateLoggedUser(true);
-
+            if (!IsChiefEditor())
+            {
+                throw new ServiceException("User not allowed");
+            }
             // validate user is chief editor
             if (loggedUser.Magazine == null) throw new ServiceException(resourceManager.GetString("InvalidAddIssueUser"));
 
