@@ -65,7 +65,7 @@ namespace Magazine.Entities
             Areas.Add(area);
         }
 
-        public Paper getPaperById(int id)
+        public Paper GetPaperById(int id)
         {
             foreach (Area area in Areas)
             {

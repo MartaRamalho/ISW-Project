@@ -137,10 +137,25 @@ namespace Magazine.Services
             return submittedPapper.Id;
         }
 
+        public void RegisterPerson(String id, String name, String surname)
+        {
+            List<Person> people = dal.GetAll<Person>().ToList();
+            foreach (Person person in people)
+            {
+                if (person.Id == id)
+                {
+                    //No registration possible, LAUNCH EXECPTION
+                    throw new ServiceException("Person already registered");
+                }
+            }
+            //No user found with id, then we create the user and we push it to dal
+            dal.Insert<Person>(new Person(id, name, surname));
+        }
+
         public void EvaluatePaper(bool accepted, string comments, DateTime date, int paperId)
         {
             ValidateLoggedUser(true);
-            Paper paperToEvaluate = magazine.getPaperById(paperId);
+            Paper paperToEvaluate = magazine.GetPaperById(paperId);
             //We check if the loggedUser is the editor of the area it belongs to
             if(paperToEvaluate.EvaluationPendingArea.Editor == loggedUser)
             {
@@ -151,14 +166,14 @@ namespace Magazine.Services
         }
         public bool isEvaluationPending(int paperId)
         {
-            Paper paper = magazine.getPaperById(paperId);
+            Paper paper = magazine.GetPaperById(paperId);
             if (paper == null) throw new ServiceException("Paper not found");
             return paper.Evaluation == null;
         }
 
         public void PublishPaper(int paperId)
         {
-            Paper paper = magazine.getPaperById(paperId);
+            Paper paper = magazine.GetPaperById(paperId);
             if (isPublicationPending(paperId))
             {   
                 
@@ -181,13 +196,13 @@ namespace Magazine.Services
 
         public bool isPublicationPending(int paperId)
         {
-            Paper paper = magazine.getPaperById(paperId);
+            Paper paper = magazine.GetPaperById(paperId);
             return paper.PublicationPendingArea != null;
         }
 
         public bool isAccepted(int paperId)
         {
-            Paper paper = magazine.getPaperById(paperId);
+            Paper paper = magazine.GetPaperById(paperId);
             bool accepted = paper.Evaluation.Accepted;
             return accepted;
         }
