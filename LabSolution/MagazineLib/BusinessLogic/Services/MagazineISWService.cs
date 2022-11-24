@@ -182,7 +182,7 @@ namespace Magazine.Services
             List<Person> coAuthors = paper.CoAuthors.ToList();
             if (coAuthors.Count >= 4)
             {
-                throw new ServiceException(resourceManager.GetString("MaximumNumberOfCoAuthors");
+                throw new ServiceException(resourceManager.GetString("MaximumNumberOfCoAuthors"));
             }
             coAuthors.Add(person);
             Commit();
