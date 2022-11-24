@@ -177,19 +177,22 @@ namespace Magazine.Services
             Paper paper = magazine.GetPaperById(paperId);
             if (isPublicationPending(paperId))
             {
-
-            }
+                Area pubPend = paper.PublicationPendingArea;
+                pubPend.PublicationPending.Remove(paper);
+                paper.PublicationPendingArea = null;           
+             }
             throw new ServiceException(resourceManager.GetString("PaperAlreadyPublished"));
         }
 
         public void UnPublishPaper(int paperId) {
             if (!isPublicationPending(paperId))
             {
-                Paper paper = magazine.getPaperById(paperId);
+                Paper paper = magazine.GetPaperById(paperId);
                 Area pubPend = paper.PublicationPendingArea;
                 pubPend.PublicationPending.Add(paper);
             }
-            
+            throw new ServiceException(resourceManager.GetString("PaperNotPublished"));
+
         }
 
         public bool isPublicationPending(int paperId)
