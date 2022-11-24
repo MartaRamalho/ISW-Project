@@ -221,6 +221,14 @@ namespace Magazine.Services
             return accepted;
         }
 
+        public IEnumerable<Paper> ListAllPapers() 
+        {
+            ValidateLoggedUser(true);
+            if(loggedUser.Magazine == null) throw new ServiceException(resourceManager.GetString("InvalidListAllPapersUser"));
+            //falta hacer la lsita con los papers
+            return null;
+        }
+
         #endregion
 
         #region Issue
