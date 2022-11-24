@@ -105,6 +105,7 @@ namespace Magazine.Services
             {
                 if (u.Login.Equals(login) && u.Password.Equals(password)) 
                 {
+                    ValidateLoggedUser(false);
                     loggedUser = u;
                     break;
                     //Creates a new session for the user        
@@ -219,7 +220,9 @@ namespace Magazine.Services
             // validate magazine exists
             if (magazine == null) throw new ServiceException(resourceManager.GetString("MagazineNotExists"));
 
-
+            Issue issue = new Issue(number, magazine);
+            magazine.Issues.Add(issue); 
+            return issue.Id;
         }
 
         #endregion
