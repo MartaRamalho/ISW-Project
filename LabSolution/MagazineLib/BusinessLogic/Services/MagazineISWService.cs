@@ -114,6 +114,12 @@ namespace Magazine.Services
             throw new ServiceException("Login incorrect. Username or password may be wrong");            
         }
 
+        public void Logout()
+        {
+            ValidateLoggedUser(true);
+            loggedUser = null;
+        }
+
         #endregion
 
         #region Paper
@@ -126,7 +132,7 @@ namespace Magazine.Services
                 throw new ServiceException("Area not found.");
             }
             Paper submittedPapper = new Paper(title, uploadDate, area, loggedUser);
-            area.addPaper(submittedPapper);
+            area.AddPaper(submittedPapper);
             Commit();
             return submittedPapper.Id;
         }
@@ -135,19 +141,61 @@ namespace Magazine.Services
         {
             ValidateLoggedUser(true);
             Paper paperToEvaluate = magazine.getPaperById(paperId);
-            paperToEvaluate.Evaluation = new Evaluation(accepted, comments, date);
-            Commit();
+            //We check if the loggedUser is the editor of the area it belongs to
+            if(paperToEvaluate.EvaluationPendingArea.Editor == loggedUser)
+            {
+                paperToEvaluate.Evaluation = new Evaluation(accepted, comments, date);
+                Commit();
+            }
+            throw new ServiceException("You do not have permissions to evaluate this paper.");
         }
         public bool isEvaluationPending(int paperId)
         {
             Paper paper = magazine.getPaperById(paperId);
+            if (paper == null) throw new ServiceException("Paper not found");
             return paper.Evaluation == null;
+        }
+
+        public void PublishPaper(int paperId)
+        {
+            Paper paper = magazine.getPaperById(paperId);
+            if (isPublicationPending(paperId))
+            {
+
+            }
+            throw new ServiceException(resourceManager.GetString("PaperAlreadyPublished"));
+        }
+
+        public bool isPublicationPending(int paperId)
+        {
+            Paper paper = magazine.getPaperById(paperId);
+            return paper.PublicationPendingArea != null;
+        }
+
+        public bool isAccepted(int paperId)
+        {
+            Paper paper = magazine.getPaperById(paperId);
+            bool accepted = paper.Evaluation.Accepted;
+            return accepted;
         }
 
         #endregion
 
         #region Issue
 
+        public int AddIssue(int number)
+        {
+            // validate logged user
+            ValidateLoggedUser(true);
+
+            // validate user is chief editor
+            if (loggedUser.Magazine == null) throw new ServiceException(resourceManager.GetString("InvalidAddIssueUser"));
+
+            // validate magazine exists
+            if (magazine == null) throw new ServiceException(resourceManager.GetString("MagazineNotExists"));
+
+
+        }
 
         #endregion
 

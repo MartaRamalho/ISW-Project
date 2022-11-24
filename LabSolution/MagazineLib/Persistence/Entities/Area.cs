@@ -53,7 +53,7 @@ namespace Magazine.Entities
             set;
         }
 
-        public void addPaper(Paper paper)
+        public void AddPaper(Paper paper)
         {
             Papers.Add(paper);
         }
