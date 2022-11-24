@@ -166,6 +166,16 @@ namespace Magazine.Services
             throw new ServiceException(resourceManager.GetString("PaperAlreadyPublished"));
         }
 
+        public void UnPublishPaper(int paperId) {
+            if (!isPublicationPending(paperId))
+            {
+                Paper paper = magazine.getPaperById(paperId);
+                Area pubPend = paper.PublicationPendingArea;
+                pubPend.PublicationPending.Add(paper);
+            }
+            
+        }
+
         public bool isPublicationPending(int paperId)
         {
             Paper paper = magazine.getPaperById(paperId);
