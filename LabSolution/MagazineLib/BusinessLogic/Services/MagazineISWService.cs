@@ -95,6 +95,7 @@ namespace Magazine.Services
             }
             //No user found with id, then we create the user and we push it to dal
             dal.Insert<User>(new User(id, name, surnames, wantsToReceive, fieldsOfIntereset, email, username, password));
+            Commit();
         }
 
         public void Login(string login, string password) 
@@ -128,6 +129,7 @@ namespace Magazine.Services
             }
             //No user found with id, then we create the user and we push it to dal
             dal.Insert<Person>(new Person(id, name, surname));
+            Commit();
         }
 
         public void Logout()
@@ -183,6 +185,7 @@ namespace Magazine.Services
                 throw new ServiceException(resourceManager.GetString("MaximumNumberOfCoAuthors");
             }
             coAuthors.Add(person);
+            Commit();
         }
 
         public void PublishPaper(int paperId)
@@ -237,7 +240,8 @@ namespace Magazine.Services
             if (magazine == null) throw new ServiceException(resourceManager.GetString("MagazineNotExists"));
 
             Issue issue = new Issue(number, magazine);
-            magazine.Issues.Add(issue); 
+            magazine.Issues.Add(issue);
+            Commit();
             return issue.Id;
         }
 
