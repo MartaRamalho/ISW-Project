@@ -160,8 +160,10 @@ namespace Magazine.Services
         {
             Paper paper = magazine.getPaperById(paperId);
             if (isPublicationPending(paperId))
-            {
-
+            {   
+                
+                Area pubPend = paper.PublicationPendingArea;
+                pubPend.PublicationPending.Remove(paper);
             }
             throw new ServiceException(resourceManager.GetString("PaperAlreadyPublished"));
         }
@@ -173,7 +175,8 @@ namespace Magazine.Services
                 Area pubPend = paper.PublicationPendingArea;
                 pubPend.PublicationPending.Add(paper);
             }
-            
+            throw new ServiceException(resourceManager.GetString("PaperNotPublished"));
+
         }
 
         public bool isPublicationPending(int paperId)
