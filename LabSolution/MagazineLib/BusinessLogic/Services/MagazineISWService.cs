@@ -118,20 +118,30 @@ namespace Magazine.Services
 
         public void RegisterPerson(String id, String name, String surname)
         {
-            List<Person> people = dal.GetAll<Person>().ToList();
-            foreach (Person person in people)
-            {
-                if (person.Id == id)
-                {
-                    //No registration possible, LAUNCH EXECPTION
-                    throw new ServiceException("Person already registered");
-                }
+            List<Person> people = GetListPeople();
+            Person person = GetPersonById(id);
+            if (person != null) {
+                throw new ServiceException("Person already registered");
             }
             //No user found with id, then we create the user and we push it to dal
             dal.Insert<Person>(new Person(id, name, surname));
             Commit();
         }
 
+        public List<Person> GetListPeople() {
+            return dal.GetAll<Person>().ToList();
+        }
+        public Person GetPersonById (String id) {
+            List<Person> people = GetListPeople();
+            foreach (Person person in people)
+            {
+                if (person.Id == id)
+                {
+                    return person;
+                }
+            }
+            throw new ServiceException("Person not found");
+        }
         public void Logout()
         {
             ValidateLoggedUser(true);
@@ -200,6 +210,7 @@ namespace Magazine.Services
                 throw new ServiceException("User not allowed");
             }
             Paper paper = magazine.GetPaperById(paperId);
+            //Check if the paper is pending of publication
             if (isPublicationPending(paperId))
             {
                 Area pubPend = paper.PublicationPendingArea;
@@ -215,6 +226,7 @@ namespace Magazine.Services
             {
                 throw new ServiceException("User not allowed");
             }
+            //Check that the paper is published
             if (!isPublicationPending(paperId))
             {
                 Paper paper = magazine.GetPaperById(paperId);
