@@ -204,7 +204,8 @@ namespace Magazine.Services
             if (!isPublicationPending(paperId))
             {
                 Paper paper = magazine.GetPaperById(paperId);
-                Area pubPend = paper.PublicationPendingArea;
+                Area pubPend = paper.BelongingArea;
+                paper.PublicationPendingArea = pubPend;
                 pubPend.PublicationPending.Add(paper);
             }
             throw new ServiceException(resourceManager.GetString("PaperNotPublished"));
@@ -222,6 +223,14 @@ namespace Magazine.Services
             Paper paper = magazine.GetPaperById(paperId);
             bool accepted = paper.Evaluation.Accepted;
             return accepted;
+        }
+
+        public IEnumerable<Paper> ListAllPapers() 
+        {
+            ValidateLoggedUser(true);
+            if(loggedUser.Magazine == null) throw new ServiceException(resourceManager.GetString("InvalidListAllPapersUser"));
+            //falta hacer la lsita con los papers
+            return null;
         }
 
         #endregion
