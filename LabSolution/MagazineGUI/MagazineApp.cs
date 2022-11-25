@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace MagazineGUI
 {
-    public partial class Form1 : Form
+    public partial class MagazineApp : Form
     {
-        public Form1()
+        public MagazineApp()
         {
             InitializeComponent();
         }
@@ -29,6 +29,11 @@ namespace MagazineGUI
         {
             InitializeComponent();
             this.service = service;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
