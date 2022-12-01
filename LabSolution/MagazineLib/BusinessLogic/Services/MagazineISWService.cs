@@ -171,14 +171,36 @@ namespace Magazine.Services
 
         
 
+        
+        //fix nullpointer exception
         public void EvaluatePaper(bool accepted, string comments, DateTime date, int paperId)
         {
+            if(comments==null || date==null)
+            {
+                throw new ServiceException("Comments and Date cannot be null");
+            }
             ValidateLoggedUser(true);
             Paper paperToEvaluate = magazine.GetPaperById(paperId);
+            if (paperToEvaluate.Evaluation != null)
+            {
+                throw new ServiceException("This paper has already been evaluated");
+            }
             //We check if the loggedUser is the editor of the area it belongs to
             if(paperToEvaluate.EvaluationPendingArea.Editor == loggedUser)
             {
                 paperToEvaluate.Evaluation = new Evaluation(accepted, comments, date);
+                if (accepted)
+                {
+                    paperToEvaluate.PublicationPendingArea = paperToEvaluate.EvaluationPendingArea;
+                    paperToEvaluate.EvaluationPendingArea = null;
+                    paperToEvaluate.PublicationPendingArea.EvaluationPending.Remove(paperToEvaluate);
+                    paperToEvaluate.PublicationPendingArea.PublicationPending.Add(paperToEvaluate);
+                }
+                else
+                {
+                    paperToEvaluate.EvaluationPendingArea.EvaluationPending.Remove(paperToEvaluate) ;
+                    paperToEvaluate.EvaluationPendingArea=null;
+                }
                 Commit();
             }
             throw new ServiceException("You do not have permissions to evaluate this paper.");
@@ -187,7 +209,7 @@ namespace Magazine.Services
         {
             Paper paper = magazine.GetPaperById(paperId);
             if (paper == null) throw new ServiceException("Paper not found");
-            return paper.Evaluation == null;
+            return paper.EvaluationPendingArea != null;
         }
 
         public void AddCoAuthors(Person person, int paperId)
@@ -215,7 +237,9 @@ namespace Magazine.Services
             {
                 Area pubPend = paper.PublicationPendingArea;
                 pubPend.PublicationPending.Remove(paper);
-                paper.PublicationPendingArea = null;           
+                paper.PublicationPendingArea = null;
+                int idIssue = BuildIssue();
+                paper.Issue=magazine.GetIssueById(idIssue);
              }
             throw new ServiceException(resourceManager.GetString("PaperAlreadyPublished"));
         }
@@ -227,16 +251,20 @@ namespace Magazine.Services
                 throw new ServiceException("User not allowed");
             }
             //Check that the paper is published
-            if (!isPublicationPending(paperId))
+            Paper paper = magazine.GetPaperById(paperId);
+            if (paper.Issue!=null)
             {
-                Paper paper = magazine.GetPaperById(paperId);
                 Area pubPend = paper.BelongingArea;
                 paper.PublicationPendingArea = pubPend;
                 pubPend.PublicationPending.Add(paper);
+                paper.Issue.PublishedPapers.Remove(paper);
+                paper.Issue = null;
+
             }
             throw new ServiceException(resourceManager.GetString("PaperNotPublished"));
 
         }
+
 
         public bool isPublicationPending(int paperId)
         {
@@ -251,33 +279,82 @@ namespace Magazine.Services
             return accepted;
         }
 
-        public IEnumerable<Paper> ListAllPapers() 
+        public List<Paper> ListAllPapers() 
         {
             ValidateLoggedUser(true);
             if (!IsChiefEditor())
             {
                 throw new ServiceException("User not allowed");
             }
-            if (loggedUser.Magazine == null) throw new ServiceException(resourceManager.GetString("InvalidListAllPapersUser"));
             //falta hacer la lsita con los papers
-            return null;
+            List<Area> areas = magazine.Areas.ToList();
+            List<Paper> allPapers = new List<Paper>();
+            foreach(Area area in areas)
+            {
+                allPapers.Concat<Paper>(area.Papers);
+            }
+            return allPapers;
+        }
+
+        public List<Person> ListAllAuthors(Paper paper)
+        {
+            ValidateLoggedUser(true);
+            if (!IsChiefEditor())
+            {
+                throw new ServiceException("User not allowed");
+            }
+            List<Person> allAuthors = new List<Person>();
+            allAuthors.Add(paper.Responsible);
+            allAuthors.Concat<Person>(paper.CoAuthors);
+            return allAuthors;
+        }
+
+        public List<Paper> PendingPublicationPaper(Area area)
+        {
+            return area.PublicationPending.ToList<Paper>();
+        }
+
+        public List<Paper> NoEvaluationPaper(Area area)
+        {
+            return area.EvaluationPending.ToList<Paper>();
+        }
+
+        public string GetState(int paperId)
+        {
+            Paper paper = magazine.GetPaperById(paperId);
+            if (paper == null)
+            {
+                throw new ServiceException("Paper does not exist");
+            }
+            if (isEvaluationPending(paperId))
+            {
+                return "Pending Evaluation";
+            }
+            else if (isPublicationPending(paperId))
+            {
+                return "Pending Publication";
+            }
+            else if (isAccepted(paperId))
+            {
+                return "Is Accepted";
+            }
+            return "Is Rejected";
         }
 
         #endregion
+
 
         #region Issue
 
         public int AddIssue(int number)
         {
-
             // validate logged user
             ValidateLoggedUser(true);
+            //ValidateLoggedUser user is IsChiefEditor editor
             if (!IsChiefEditor())
             {
                 throw new ServiceException("User not allowed");
             }
-            // validate user is chief editor
-            if (loggedUser.Magazine == null) throw new ServiceException(resourceManager.GetString("InvalidAddIssueUser"));
 
             // validate magazine exists
             if (magazine == null) throw new ServiceException(resourceManager.GetString("MagazineNotExists"));
@@ -287,6 +364,23 @@ namespace Magazine.Services
             Commit();
             return issue.Id;
         }
+
+        public int BuildIssue()
+        {
+            List<Issue> issues = magazine.Issues.ToList<Issue>();
+            int number = 0;
+            foreach (Issue issue in issues)
+            {
+                number = issue.Number;
+                if(issue.PublicationDate == null)
+                {
+                    return issue.Number;
+                }
+            }
+            return AddIssue(number+1);
+        }
+
+
 
         #endregion
 

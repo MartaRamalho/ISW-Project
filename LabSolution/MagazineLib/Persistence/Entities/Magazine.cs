@@ -51,6 +51,15 @@ namespace Magazine.Entities
             return null;
         }
 
+        public Issue GetIssueById(int id)
+        {
+            foreach (Issue issue in Issues)
+            {
+                if (issue.Id == id) return issue;
+            }
+            return null;
+        }
+
         public Area GetAreaByName(String name)
         {
             foreach (Area area in Areas)
