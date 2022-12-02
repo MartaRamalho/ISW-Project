@@ -244,6 +244,13 @@ namespace Magazine.Services
             throw new ServiceException(resourceManager.GetString("PaperAlreadyPublished"));
         }
 
+
+        //Checking that is published because the issue is not null
+        public bool isPublishedPaper(int paperId) { 
+            Paper paper = magazine.GetPaperById(paperId);
+            return paper.Issue != null;
+        }
+
         public void UnPublishPaper(int paperId) {
             ValidateLoggedUser(true);
             if (!IsChiefEditor())
@@ -252,7 +259,7 @@ namespace Magazine.Services
             }
             //Check that the paper is published
             Paper paper = magazine.GetPaperById(paperId);
-            if (paper.Issue!=null)
+            if (paper.Issue!=null) //Cambiar por metodo de arriba <----
             {
                 Area pubPend = paper.BelongingArea;
                 paper.PublicationPendingArea = pubPend;
@@ -309,9 +316,25 @@ namespace Magazine.Services
             return allAuthors;
         }
 
+
+        //To list papers that are have pending their publication in an area
         public List<Paper> PendingPublicationPaper(Area area)
         {
             return area.PublicationPending.ToList<Paper>();
+        }
+
+        //To list papers that are published in an area
+        public List<Paper> PublishedPapers(Area area)
+        {
+            List<Paper> pubPapers = new List<Paper>();
+            foreach (Paper paper in area.Papers) 
+            {
+                if (isPublishedPaper(paper.Id))
+                { 
+                    pubPapers.Add(paper);
+                }
+            }
+            return pubPapers;
         }
 
         public List<Paper> NoEvaluationPaper(Area area)
