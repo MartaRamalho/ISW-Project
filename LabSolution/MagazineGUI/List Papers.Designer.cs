@@ -38,9 +38,10 @@
             // 
             this.listView1.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(49, 123);
+            this.listView1.Location = new System.Drawing.Point(65, 151);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(714, 245);
+            this.listView1.Size = new System.Drawing.Size(951, 301);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -48,17 +49,19 @@
             // 
             this.comboBox1.Font = new System.Drawing.Font("Segoe UI Emoji", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(49, 77);
+            this.comboBox1.Location = new System.Drawing.Point(65, 95);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(263, 36);
+            this.comboBox1.Size = new System.Drawing.Size(349, 43);
             this.comboBox1.TabIndex = 1;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI Emoji", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(632, 388);
+            this.button1.Location = new System.Drawing.Point(843, 478);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 41);
+            this.button1.Size = new System.Drawing.Size(175, 50);
             this.button1.TabIndex = 2;
             this.button1.Text = "Go back";
             this.button1.UseVisualStyleBackColor = true;
@@ -67,24 +70,27 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Emoji", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(46, 44);
+            this.label1.Location = new System.Drawing.Point(61, 54);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 26);
+            this.label1.Size = new System.Drawing.Size(62, 32);
             this.label1.TabIndex = 3;
             this.label1.Text = "Area";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // List_Papers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.listView1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "List_Papers";
             this.Text = "List_Papers";
+            this.Load += new System.EventHandler(this.List_Papers_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

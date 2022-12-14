@@ -46,5 +46,10 @@ namespace MagazineGUI
         {
 
         }
+
+        private void Register_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

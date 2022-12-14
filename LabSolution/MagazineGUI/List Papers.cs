@@ -21,5 +21,10 @@ namespace MagazineGUI
         {
 
         }
+
+        private void List_Papers_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
