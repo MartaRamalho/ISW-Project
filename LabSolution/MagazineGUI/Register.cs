@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Magazine.Services;
 
 namespace MagazineGUI
 {
     public partial class Register : Form
     {
-        public Register()
+        IMagazineISWService service;
+        public Register(IMagazineISWService service)
         {
             InitializeComponent();
+            this.service = service;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -64,7 +67,17 @@ namespace MagazineGUI
 
         private void RegisterClicked(object sender, EventArgs e)
         {
-
+            try
+            {
+                service.RegisterUser();
+                //confirm
+                this.Close();
+            } 
+            catch (ServiceException e) 
+            {
+                MessageBox.Show("Username already in use", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }

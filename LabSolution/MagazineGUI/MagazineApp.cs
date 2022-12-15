@@ -8,14 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Magazine.Services;
 
 namespace MagazineGUI
 {
     public partial class MagazineApp : Form
     {
+        IMagazineISWService service;
         public MagazineApp(IMagazineISWService service)
         {
             InitializeComponent();
+            this.service = service;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -42,7 +45,7 @@ namespace MagazineGUI
 
         private void ClickedRegister(object sender, EventArgs e)
         {
-            Register register = new Register();
+            Register register = new Register(service);
             register.ShowDialog();
         }
     }
