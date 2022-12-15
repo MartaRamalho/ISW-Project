@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelName = new System.Windows.Forms.Label();
             this.labelSurname = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
@@ -41,8 +42,14 @@
             this.labelUsername = new System.Windows.Forms.Label();
             this.registerButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.radioButtonNotify = new System.Windows.Forms.RadioButton();
             this.checkedListAreas = new System.Windows.Forms.CheckedListBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.checkBoxNotify = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource3)).BeginInit();
             this.SuspendLayout();
             // 
             // labelName
@@ -185,20 +192,6 @@
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // radioButtonNotify
-            // 
-            this.radioButtonNotify.AutoSize = true;
-            this.radioButtonNotify.Font = new System.Drawing.Font("Segoe UI Emoji", 12F);
-            this.radioButtonNotify.Location = new System.Drawing.Point(18, 598);
-            this.radioButtonNotify.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButtonNotify.Name = "radioButtonNotify";
-            this.radioButtonNotify.Size = new System.Drawing.Size(445, 31);
-            this.radioButtonNotify.TabIndex = 15;
-            this.radioButtonNotify.TabStop = true;
-            this.radioButtonNotify.Text = "I want to be notified if a new paper is published";
-            this.radioButtonNotify.UseVisualStyleBackColor = true;
-            this.radioButtonNotify.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
             // checkedListAreas
             // 
             this.checkedListAreas.FormattingEnabled = true;
@@ -207,13 +200,24 @@
             this.checkedListAreas.Size = new System.Drawing.Size(344, 191);
             this.checkedListAreas.TabIndex = 16;
             // 
+            // checkBoxNotify
+            // 
+            this.checkBoxNotify.AutoSize = true;
+            this.checkBoxNotify.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxNotify.Location = new System.Drawing.Point(12, 617);
+            this.checkBoxNotify.Name = "checkBoxNotify";
+            this.checkBoxNotify.Size = new System.Drawing.Size(380, 24);
+            this.checkBoxNotify.TabIndex = 17;
+            this.checkBoxNotify.Text = "I want to be notified if a new paper is published";
+            this.checkBoxNotify.UseVisualStyleBackColor = true;
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(802, 666);
+            this.Controls.Add(this.checkBoxNotify);
             this.Controls.Add(this.checkedListAreas);
-            this.Controls.Add(this.radioButtonNotify);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.registerButton);
             this.Controls.Add(this.textBoxPassword);
@@ -231,6 +235,9 @@
             this.Name = "Register";
             this.Text = "Register";
             this.Load += new System.EventHandler(this.Register_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,7 +258,10 @@
         private System.Windows.Forms.Label labelUsername;
         private System.Windows.Forms.Button registerButton;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.RadioButton radioButtonNotify;
         private System.Windows.Forms.CheckedListBox checkedListAreas;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.BindingSource bindingSource2;
+        private System.Windows.Forms.BindingSource bindingSource3;
+        private System.Windows.Forms.CheckBox checkBoxNotify;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MagazineGUI
 {
-    partial class Main
+    partial class Menu
     {
         /// <summary>
         /// Required designer variable.
@@ -57,7 +57,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 201);
+            this.ClientSize = new System.Drawing.Size(536, 199);
             this.Controls.Add(this.labelMenu);
             this.Controls.Add(this.button1);
             this.Margin = new System.Windows.Forms.Padding(4);

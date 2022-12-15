@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MagazineGUI
 {
-    public partial class Main : Form
+    public partial class Menu : Form
     {
-        public Main()
+        public Menu()
         {
             InitializeComponent();
         }
