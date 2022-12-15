@@ -23,11 +23,6 @@ namespace MagazineGUI
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
@@ -36,6 +31,19 @@ namespace MagazineGUI
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ClickedLogin(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.ShowDialog();
+            
+        }
+
+        private void ClickedRegister(object sender, EventArgs e)
+        {
+            Register register = new Register();
+            register.ShowDialog();
         }
     }
 }

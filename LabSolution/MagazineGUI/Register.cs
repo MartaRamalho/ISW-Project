@@ -37,11 +37,6 @@ namespace MagazineGUI
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -58,6 +53,16 @@ namespace MagazineGUI
         }
 
         private void textBoxSurname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CancelClicked(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void RegisterClicked(object sender, EventArgs e)
         {
 
         }

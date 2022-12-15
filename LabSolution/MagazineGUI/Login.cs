@@ -22,17 +22,7 @@ namespace MagazineGUI
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Login_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
         {
 
         }
@@ -40,6 +30,16 @@ namespace MagazineGUI
         private void labelPassword_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ClickedCancel(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void LoginClicked(object sender, EventArgs e)
+        {
+            
         }
     }
 }
