@@ -167,6 +167,8 @@ namespace Magazine.Services
                 throw new ServiceException("Area not found.");
             }
             Paper submittedPapper = new Paper(title, uploadDate, area, loggedUser);
+            submittedPapper.EvaluationPendingArea = area;
+            area.EvaluationPending.Add(submittedPapper);
             area.AddPaper(submittedPapper);
             Commit();
             return submittedPapper.Id;
