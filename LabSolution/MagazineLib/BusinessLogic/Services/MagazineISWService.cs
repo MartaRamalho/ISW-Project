@@ -162,6 +162,10 @@ namespace Magazine.Services
             {
                 throw new ServiceException("Invalid Date.");
             }
+            if (title == null)
+            {
+                throw new ServiceException("Invalid Title.");
+            }
             Area area = magazine.getAreaById(areaId);
             if(area == null) { 
                 throw new ServiceException("Area not found.");
@@ -266,7 +270,7 @@ namespace Magazine.Services
                 paper.PublicationPendingArea = null;
                 int idIssue = BuildIssue();
                 paper.Issue=magazine.GetIssueById(idIssue);
-             }
+            }
             else
             {
                 throw new ServiceException(resourceManager.GetString("PaperAlreadyPublished"));
