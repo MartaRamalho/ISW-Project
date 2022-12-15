@@ -14,12 +14,9 @@ namespace MagazineGUI
     public partial class MagazineISWFormBase : Form
     {
         private IMagazineISWService service;
-        public MagazineISWFormBase()
+        public MagazineISWFormBase(IMagazineISWService service)
         {
             InitializeComponent();
-        }
-        public MagazineISWFormBase(IMagazineISWService service) : this()
-        {
             this.service = service;
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Magazine.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace MagazineGUI
 {
     public partial class RegisterPerson : Form
     {
-        public RegisterPerson()
+        IMagazineISWService service;
+        public RegisterPerson(IMagazineISWService service)
         {
             InitializeComponent();
+            this.service = service;
         }
     }
 }
