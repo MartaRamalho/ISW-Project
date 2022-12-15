@@ -11,13 +11,11 @@ using System.Windows.Forms;
 
 namespace MagazineGUI
 {
-    public partial class Menu : Form
+    public partial class Menu : MagazineISWFormBase
     {
-        IMagazineISWService service;
-        public Menu(IMagazineISWService service)
+        public Menu(IMagazineISWService service) :base(service)
         {
             InitializeComponent();
-            this.service = service;
         }
 
         private void Main_Load(object sender, EventArgs e)

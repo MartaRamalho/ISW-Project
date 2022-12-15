@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Magazine.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,9 @@ using System.Windows.Forms;
 
 namespace MagazineGUI
 {
-    public partial class List_Papers : Form
+    public partial class List_Papers : MagazineISWFormBase
     {
-        public List_Papers()
+        public List_Papers(IMagazineISWService service) : base(service)
         {
             InitializeComponent();
         }

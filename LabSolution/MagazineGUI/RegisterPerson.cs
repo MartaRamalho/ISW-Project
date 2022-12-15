@@ -11,13 +11,11 @@ using System.Windows.Forms;
 
 namespace MagazineGUI
 {
-    public partial class RegisterPerson : Form
+    public partial class RegisterPerson : MagazineISWFormBase
     {
-        IMagazineISWService service;
-        public RegisterPerson(IMagazineISWService service)
+        public RegisterPerson(IMagazineISWService service):base(service)
         {
             InitializeComponent();
-            this.service = service;
         }
     }
 }

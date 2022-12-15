@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Magazine.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,9 @@ using System.Windows.Forms;
 
 namespace MagazineGUI
 {
-    public partial class Login : Form
+    public partial class Login : MagazineISWFormBase
     {
-        public Login()
+        public Login(IMagazineISWService service) :base(service)
         {
             InitializeComponent();
         }

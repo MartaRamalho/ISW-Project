@@ -11,13 +11,11 @@ using Magazine.Services;
 
 namespace MagazineGUI
 {
-    public partial class Register : Form
+    public partial class Register : MagazineISWFormBase
     {
-        IMagazineISWService service;
-        public Register(IMagazineISWService service)
+        public Register(IMagazineISWService service):base(service)
         {
             InitializeComponent();
-            this.service = service;
         }
 
         private void label1_Click(object sender, EventArgs e)

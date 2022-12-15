@@ -12,13 +12,11 @@ using Magazine.Services;
 
 namespace MagazineGUI
 {
-    public partial class MagazineApp : Form
+    public partial class MagazineApp : MagazineISWFormBase
     {
-        IMagazineISWService service;
-        public MagazineApp(IMagazineISWService service)
+        public MagazineApp(IMagazineISWService service):base(service)
         {
             InitializeComponent();
-            this.service = service;
         }
 
         private void Form1_Load(object sender, EventArgs e)
