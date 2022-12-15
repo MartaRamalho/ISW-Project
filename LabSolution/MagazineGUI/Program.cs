@@ -21,7 +21,7 @@ namespace MagazineGUI
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MagazineApp());
+            Application.Run(new MagazineApp(service));
         }
     }
 }

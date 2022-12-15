@@ -13,7 +13,7 @@ namespace MagazineGUI
 {
     public partial class MagazineApp : Form
     {
-        public MagazineApp()
+        public MagazineApp(IMagazineISWService service)
         {
             InitializeComponent();
         }
@@ -23,20 +23,17 @@ namespace MagazineGUI
 
         }
 
-        private IMagazineISWService service;
-
-        public void MagazineApps(IMagazineISWService service)
-        {
-            InitializeComponent();
-            this.service = service;
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
 
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

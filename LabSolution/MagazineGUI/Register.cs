@@ -51,5 +51,15 @@ namespace MagazineGUI
         {
 
         }
+
+        private void labelArea_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxSurname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

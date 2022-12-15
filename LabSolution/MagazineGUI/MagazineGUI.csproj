@@ -56,6 +56,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MagazineApp2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MagazineApp2.Designer.cs">
+      <DependentUpon>MagazineApp2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MagazineISWFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MagazineISWFormBase.Designer.cs">
+      <DependentUpon>MagazineISWFormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterPerson.Designer.cs">
+      <DependentUpon>RegisterPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="List Papers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +129,9 @@
     </Compile>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterPerson.resx">
+      <DependentUpon>RegisterPerson.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
