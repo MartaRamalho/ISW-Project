@@ -13,10 +13,13 @@ namespace MagazineGUI
 {
     public partial class MagazineISWFormBase : Form
     {
-        private IMagazineISWService service;
-        public MagazineISWFormBase(IMagazineISWService service)
+        protected IMagazineISWService service;
+        public MagazineISWFormBase()
         {
             InitializeComponent();
+        }
+        public MagazineISWFormBase(IMagazineISWService service):this()
+        {
             this.service = service;
         }
     }

@@ -28,42 +28,87 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.labelMenu = new System.Windows.Forms.Label();
+            this.buttonSubmitPaper = new System.Windows.Forms.Button();
+            this.labelWelcome = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuIAccount = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStrip = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonSubmitPaper
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI Emoji", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(168, 120);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(196, 54);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Logout";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonSubmitPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSubmitPaper.Location = new System.Drawing.Point(184, 189);
+            this.buttonSubmitPaper.Name = "buttonSubmitPaper";
+            this.buttonSubmitPaper.Size = new System.Drawing.Size(145, 75);
+            this.buttonSubmitPaper.TabIndex = 4;
+            this.buttonSubmitPaper.Text = "Submit Paper";
+            this.buttonSubmitPaper.UseVisualStyleBackColor = true;
+            this.buttonSubmitPaper.Click += new System.EventHandler(this.SubmitPaperClicked);
             // 
-            // labelMenu
+            // labelWelcome
             // 
-            this.labelMenu.AutoSize = true;
-            this.labelMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMenu.Location = new System.Drawing.Point(219, 46);
-            this.labelMenu.Name = "labelMenu";
-            this.labelMenu.Size = new System.Drawing.Size(85, 32);
-            this.labelMenu.TabIndex = 1;
-            this.labelMenu.Text = "Menu";
+            this.labelWelcome.AutoSize = true;
+            this.labelWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWelcome.Location = new System.Drawing.Point(126, 59);
+            this.labelWelcome.Name = "labelWelcome";
+            this.labelWelcome.Size = new System.Drawing.Size(274, 92);
+            this.labelWelcome.TabIndex = 3;
+            this.labelWelcome.Text = "Welcome to \r\nMagazine App";
+            this.labelWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Main
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuIAccount});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(532, 28);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStripMenuIAccount
+            // 
+            this.toolStripMenuIAccount.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logoutToolStrip,
+            this.exitToolStripMenuItem});
+            this.toolStripMenuIAccount.Name = "toolStripMenuIAccount";
+            this.toolStripMenuIAccount.Size = new System.Drawing.Size(77, 24);
+            this.toolStripMenuIAccount.Text = "Account";
+            // 
+            // logoutToolStrip
+            // 
+            this.logoutToolStrip.Name = "logoutToolStrip";
+            this.logoutToolStrip.Size = new System.Drawing.Size(139, 26);
+            this.logoutToolStrip.Text = "Logout";
+            this.logoutToolStrip.Click += new System.EventHandler(this.LogoutClicked);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitClicked);
+            // 
+            // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 199);
-            this.Controls.Add(this.labelMenu);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(532, 503);
+            this.Controls.Add(this.buttonSubmitPaper);
+            this.Controls.Add(this.labelWelcome);
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Main";
-            this.Text = "Main";
+            this.Name = "Menu";
+            this.Text = "Menu";
             this.Load += new System.EventHandler(this.Main_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -71,7 +116,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label labelMenu;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuIAccount;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStrip;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Label labelWelcome;
+        private System.Windows.Forms.Button buttonSubmitPaper;
     }
 }

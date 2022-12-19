@@ -52,11 +52,15 @@ namespace Magazine.Services
         /// <returns>   Any required ServiceExceptions
         /// </returns>
         void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password);
-
+        void RegisterPerson(string id, string name, string surname);
+        void AddCoAuthors(Person person, int paperId);
+        List<Person> ListAllAuthors(int paperId);
+        List<string> GetListPeople();
+        string GetFullName(string id);
         #endregion
 
         #region Paper
-
+        List<Paper> ListAllPapers();
         /// <summary>   Validate data, if correct, register paper submission with logged user.</summary>
         /// <param>     <c>areaid</c> is the id of the area to which the paper is submitted. 
         /// </param>
@@ -141,7 +145,7 @@ namespace Magazine.Services
         ///             Any required ServiceExceptions 
         /// </returns>
         int AddIssue(int number);
-
+        int BuildIssue();
         #endregion
 
         #region Area
@@ -156,6 +160,8 @@ namespace Magazine.Services
         ///             Any required ServiceExceptions 
         /// </returns>
         int AddArea(string areaName, string editorId);
+        ICollection<String> ListAllAreas();
+        int GetAreaIdByName(string areaName);
 
         #endregion
 

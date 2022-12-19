@@ -13,12 +13,34 @@ namespace MagazineGUI
 {
     public partial class Menu : MagazineISWFormBase
     {
+        public Menu()
+        {
+            InitializeComponent();
+        }
         public Menu(IMagazineISWService service) :base(service)
         {
             InitializeComponent();
         }
-
+  
         private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LogoutClicked(object sender, EventArgs e)
+        {
+            service.Logout();
+            this.Close();
+            new MagazineApp(service).Show();
+        }
+
+        private void ExitClicked(object sender, EventArgs e)
+        {
+            service.Logout();
+            this.Close();
+        }
+
+        private void SubmitPaperClicked(object sender, EventArgs e)
         {
 
         }

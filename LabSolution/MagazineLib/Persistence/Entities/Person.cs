@@ -33,5 +33,10 @@ namespace Magazine.Entities
             get;
             set;
         }
+
+        public string GetFullName()
+        {
+            return Name + " " + Surname;
+        }
     }
 }

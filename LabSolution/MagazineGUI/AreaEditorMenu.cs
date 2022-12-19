@@ -11,11 +11,20 @@ using System.Windows.Forms;
 
 namespace MagazineGUI
 {
-    public partial class MagazineApp2 : MagazineISWFormBase
+    public partial class AreaEditorMenu : Menu
     {
-        public MagazineApp2(IMagazineISWService service) : base(service)
+        public AreaEditorMenu() : base()
         {
             InitializeComponent();
+        }
+        public AreaEditorMenu(IMagazineISWService service):base(service)
+        {
+            InitializeComponent();
+        }
+
+        private void EvaluatePaperClicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

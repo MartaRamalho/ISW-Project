@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Magazine.Services;
+
 
 namespace MagazineGUI
 {
@@ -19,24 +19,9 @@ namespace MagazineGUI
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ClickedLogin(object sender, EventArgs e)
         {
-            Login login = new Login();
+            Login login = new Login(service);
             login.ShowDialog();
             
         }
@@ -45,6 +30,16 @@ namespace MagazineGUI
         {
             Register register = new Register(service);
             register.ShowDialog();
+        }
+
+        private void MagazineApp_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Help_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

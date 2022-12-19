@@ -46,6 +46,7 @@
             this.cancelButton.TabIndex = 20;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelClicked);
             // 
             // registerButton
             // 
@@ -57,23 +58,24 @@
             this.registerButton.TabIndex = 19;
             this.registerButton.Text = "Register";
             this.registerButton.UseVisualStyleBackColor = true;
+            this.registerButton.Click += new System.EventHandler(this.RegisterClicked);
             // 
             // textBoxSurname
             // 
-            this.textBoxSurname.Font = new System.Drawing.Font("Segoe UI Emoji", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSurname.Location = new System.Drawing.Point(151, 83);
+            this.textBoxSurname.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxSurname.Location = new System.Drawing.Point(151, 89);
             this.textBoxSurname.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSurname.Name = "textBoxSurname";
-            this.textBoxSurname.Size = new System.Drawing.Size(344, 38);
+            this.textBoxSurname.Size = new System.Drawing.Size(344, 34);
             this.textBoxSurname.TabIndex = 18;
             // 
             // textBoxName
             // 
-            this.textBoxName.Font = new System.Drawing.Font("Segoe UI Emoji", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxName.Location = new System.Drawing.Point(151, 23);
+            this.textBoxName.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxName.Location = new System.Drawing.Point(151, 29);
             this.textBoxName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(344, 38);
+            this.textBoxName.Size = new System.Drawing.Size(344, 34);
             this.textBoxName.TabIndex = 17;
             // 
             // labelSurname

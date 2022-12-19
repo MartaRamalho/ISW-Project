@@ -75,6 +75,40 @@ namespace Magazine.Entities
             get;
             set;
         }
+        public void EvaluatePaper(bool accepted, string comments, DateTime date)
+        {
+            Evaluation = new Evaluation(accepted, comments, date);
+            EvaluationPendingArea.EvaluatePaper(this, accepted);
+            EvaluationPendingArea = null;
+            if (accepted)
+            {
+                PublicationPendingArea = EvaluationPendingArea;
+            }
+        }
+        public void publishPaper()
+        {
+            PublicationPendingArea.PublicationPending.Remove(this);
+            PublicationPendingArea = null;
+        }
 
+        public void UnpublishPaper()
+        {
+            PublicationPendingArea = BelongingArea;
+            PublicationPendingArea.PublicationPending.Add(this);
+            Issue.PublishedPapers.Remove(this);
+            Issue = null;
+        }
+        public bool isAccepted()
+        {
+            return Evaluation.Accepted;
+        }
+        public List<Person> AllAuthors()
+        {
+            List<Person> allAuthors = new List<Person>();
+            allAuthors.Add(Responsible);
+            allAuthors.Concat(CoAuthors);
+            return allAuthors;
+        }
+        
     }
 }

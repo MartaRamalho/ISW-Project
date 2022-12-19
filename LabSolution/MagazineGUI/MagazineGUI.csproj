@@ -56,11 +56,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MagazineApp2.cs">
+    <Compile Include="AreaEditorMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MagazineApp2.Designer.cs">
-      <DependentUpon>MagazineApp2.cs</DependentUpon>
+    <Compile Include="AreaEditorMenu.Designer.cs">
+      <DependentUpon>AreaEditorMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChiefEditorMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChiefEditorMenu.Designer.cs">
+      <DependentUpon>ChiefEditorMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubmitPaper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubmitPaper.Designer.cs">
+      <DependentUpon>SubmitPaper.cs</DependentUpon>
     </Compile>
     <Compile Include="MagazineISWFormBase.cs">
       <SubType>Form</SubType>
@@ -106,6 +118,9 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SubmitPaper.resx">
+      <DependentUpon>SubmitPaper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="List Papers.resx">
       <DependentUpon>List Papers.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +133,9 @@
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChiefEditorMenu.resx">
+      <DependentUpon>ChiefEditorMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -129,6 +147,9 @@
     </Compile>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AreaEditorMenu.resx">
+      <DependentUpon>AreaEditorMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterPerson.resx">
       <DependentUpon>RegisterPerson.cs</DependentUpon>

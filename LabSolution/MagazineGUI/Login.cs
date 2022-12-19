@@ -13,22 +13,13 @@ namespace MagazineGUI
 {
     public partial class Login : MagazineISWFormBase
     {
+        String username, password;
         public Login(IMagazineISWService service) :base(service)
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Login_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelPassword_Click(object sender, EventArgs e)
         {
 
         }
@@ -40,7 +31,18 @@ namespace MagazineGUI
 
         private void LoginClicked(object sender, EventArgs e)
         {
-            
+            username=textBoxUsername.Text;
+            password=textBoxPassword.Text;
+            try
+            {
+                service.Login(username, password);
+                
+                this.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
