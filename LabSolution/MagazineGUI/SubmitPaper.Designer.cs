@@ -234,7 +234,7 @@
             this.Controls.Add(this.labelArea);
             this.Controls.Add(this.comboBoxArea);
             this.Name = "SubmitPaper";
-            this.Text = "Form1";
+            this.Text = "SubmitPaper";
             this.Load += new System.EventHandler(this.SubmitPaper_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

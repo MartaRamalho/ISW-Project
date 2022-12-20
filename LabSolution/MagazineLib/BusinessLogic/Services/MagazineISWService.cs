@@ -2,6 +2,7 @@
 using Magazine.Persistence;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
@@ -72,6 +73,8 @@ namespace Magazine.Services
             Login("fjaen", "1234");
             AddArea("HCI", "77777777B");
             AddArea("Software Engineering", "88888888C");
+            BuildIssue();
+            BuildIssue();
             Logout();
         }
 
@@ -192,6 +195,8 @@ namespace Magazine.Services
         }
         public int GetEditorArea()
         {
+            if(!IsAreaEditor())
+                throw new ServiceException("User not allowed.");
             return loggedUser.Area.Id;
         }
         
@@ -203,7 +208,12 @@ namespace Magazine.Services
         public int SubmitPaper(int areaId, string title, DateTime uploadDate)
         {
             ValidateLoggedUser(true);
-            if(uploadDate == null || !uploadDate.Equals(DateTime.Today))
+            Area area = magazine.getAreaById(areaId);
+            if (area == null)
+            {
+                throw new ServiceException("Area not found.");
+            }
+            if (uploadDate == null || !uploadDate.Equals(DateTime.Today))
             {
                 throw new ServiceException("Invalid Date.");
             }
@@ -211,10 +221,7 @@ namespace Magazine.Services
             {
                 throw new ServiceException("Invalid Title.");
             }
-            Area area = magazine.getAreaById(areaId);
-            if(area == null) { 
-                throw new ServiceException("Area not found.");
-            }
+            
             Paper submittedPapper = new Paper(title, uploadDate, area, loggedUser);
             loggedUser.MainAuthoredPapers.Add(submittedPapper);
             submittedPapper.EvaluationPendingArea = area;
@@ -233,13 +240,25 @@ namespace Magazine.Services
             date= paper.UploadDate;
             user= GetFullName(paper.Responsible.Id);
         }
+        public Paper GetPaperById(int paperId)
+        {
+            Paper paper = magazine.GetPaperById(paperId);
+            if (paper == null)
+                throw new ServiceException("This paper does not exist");
+            return paper;
+        }
+
         public void EvaluatePaper(bool accepted, string comments, DateTime date, int paperId)
         {
-            if(comments==null || date==null)
+            if(comments=="")
             {
-                throw new ServiceException("Comments and Date must be provided");
+                throw new ServiceException("Comments must be provided");
             }
             ValidateLoggedUser(true);
+            if(date == null || !date.Equals(DateTime.Today))
+            {
+                throw new ServiceException("Invalid Date");
+            }
             Paper paperToEvaluate = magazine.GetPaperById(paperId);
             if(paperToEvaluate == null)
             {
@@ -250,7 +269,7 @@ namespace Magazine.Services
                 throw new ServiceException("This paper has already been evaluated");
             }
             //We check if the loggedUser is the editor of the area it belongs to
-            if(paperToEvaluate.EvaluationPendingArea.Editor == loggedUser)
+            if(paperToEvaluate.EvaluationPendingArea.Editor.Equals(loggedUser))
             {
                 paperToEvaluate.EvaluatePaper(accepted, comments, date);
                 Commit();
@@ -378,33 +397,45 @@ namespace Magazine.Services
             return paper.isAccepted();
         }
 
-        public List<Paper> ListAllPapers() 
+        public ICollection<int> ListAllPapers() 
         {
             ValidateLoggedUser(true);
             if (!IsChiefEditor())
             {
                 throw new ServiceException("User not allowed");
             }
-            List<Paper> allPapers = magazine.ListAllPapers();
+            ICollection<int> allPapers = magazine.ListAllPapers();
             return allPapers;
         }
 
-        public ICollection<int> ListPapersInArea()
+        public ICollection<int> ListAllPapersByIssue(int idIssue)
         {
             ValidateLoggedUser(true);
-            Area area = magazine.getAreaById(GetEditorArea());
-            if ( area == null)
-            {
-                throw new ServiceException("Area not found");
-            }
-            if (!IsAreaEditor())
+            if (!IsChiefEditor())
             {
                 throw new ServiceException("User not allowed");
             }
-            return area.GetPapers();
+            Issue issue = magazine.GetIssueById(idIssue);
+            if (issue == null)
+            {
+                throw new ServiceException("Issue not found");
+            }
+            return issue.GetPapers();
         }
 
-        public List<Person> ListAllAuthors(int paperId)
+        public ICollection<int> ListPapersInAreaPendingEvaluation(int areaId)
+        {
+            ValidateLoggedUser(true);
+            Area area = magazine.getAreaById(areaId);
+            if ( area == null)
+            {
+                throw new ServiceException("Area not found");
+            }            return area.GetPapersPendingEvaluation();
+        }
+
+
+
+        public ICollection<string> ListAllAuthors(int paperId)
         {
             ValidateLoggedUser(true);
             Paper paper = magazine.GetPaperById(paperId);
@@ -416,7 +447,7 @@ namespace Magazine.Services
             {
                 throw new ServiceException("Paper not found");
             }
-            return paper.CoAuthors.ToList<Person>();
+            return paper.AllAuthors();
         }
 
 
@@ -432,9 +463,10 @@ namespace Magazine.Services
         }
 
         //To list papers that are published in an area
-        public List<Paper> PublishedPapers(Area area)
+        public ICollection<int> PublishedPapers(int areaId)
         {
-            List<Paper> pubPapers = new List<Paper>();
+            List<int> pubPapers = new List<int>();
+            Area area = magazine.getAreaById(areaId);
             if (area == null)
             {
                 throw new ServiceException("Area not found");
@@ -443,7 +475,7 @@ namespace Magazine.Services
             {
                 if (isPublishedPaper(paper.Id))
                 { 
-                    pubPapers.Add(paper);
+                    pubPapers.Add(paper.Id);
                 }
             }
             return pubPapers;
@@ -458,31 +490,7 @@ namespace Magazine.Services
             return area.EvaluationPending.ToList<Paper>();
         }
         //mover este metodo a la gui
-        public string GetState(int paperId)
-        {
-            Paper paper = magazine.GetPaperById(paperId);
-            if (paper == null)
-            {
-                throw new ServiceException("Paper does not exist");
-            }
-            if (isEvaluationPending(paperId))
-            {
-                return "Pending Evaluation";
-            }
-            else if (isPublicationPending(paperId))
-            {
-                return "Pending Publication";
-            }
-            else if (isPublishedPaper(paperId))
-            {
-                return "Is Published";
-            }
-            else if (isAccepted(paperId))
-            {
-                return "Is Accepted";
-            }
-            return "Is Rejected";
-        }
+        
 
         #endregion
 
@@ -501,16 +509,43 @@ namespace Magazine.Services
             
             // validate magazine exists
             if (magazine == null) throw new ServiceException("Magazine Does Not Exist");
-            int issueId=magazine.AddIssue(number).Id;
+            int issueNum=magazine.AddIssue(number).Number;
             Commit();
-            return issueId;
+            return issueNum;
         }
 
         public int BuildIssue()
         {
             if (magazine == null) throw new ServiceException("Magazine Does Not Exist");
-            int number = magazine.GetCurrentIssue();
-            return number;
+            if (!IsChiefEditor())
+            {
+                throw new ServiceException("User not allowed");
+            }
+            int number = 0;
+            foreach (int id in magazine.GetListIssues())
+            {
+                Issue issue = magazine.GetIssueById(id);
+                if (issue == null)
+                {
+                    throw new ServiceException("Issue not found");
+                }
+                if (issue.PublicationDate == null)
+                {
+                    return issue.Number;
+                }
+                number = issue.Number;
+            }
+            return AddIssue(number+1);
+        }
+
+        public ICollection<int> ListAllIssues()
+        {
+            if (magazine == null) throw new ServiceException("Magazine Does Not Exist");
+            if (!IsChiefEditor())
+            {
+                throw new ServiceException("User not allowed");
+            }
+            return magazine.GetListIssues();
         }
 
 
@@ -566,6 +601,7 @@ namespace Magazine.Services
         {
             return magazine.ListAreas();
         }
+
         #endregion
 
         #region Magazine

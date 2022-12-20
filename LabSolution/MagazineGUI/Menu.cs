@@ -43,7 +43,7 @@ namespace MagazineGUI
         private void SubmitPaperClicked(object sender, EventArgs e)
         {
             SubmitPaper submitPaper = new SubmitPaper(service);
-            submitPaper.Show();
+            submitPaper.ShowDialog();
         }
 
         private void OnMenuClosed(object sender, FormClosedEventArgs e)

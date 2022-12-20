@@ -2,6 +2,7 @@
 using Magazine.Services;
 using Microsoft.Win32;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -87,28 +88,18 @@ namespace Magazine.Entities
             }
             return null;
         }
-        public List<Paper> ListAllPapers()
+        public ICollection<int> ListAllPapers()
         {
-            List<Area> areas = Areas.ToList();
-            List<Paper> allPapers = new List<Paper>();
+            ICollection<Area> areas = Areas.ToList();
+            ICollection<int> allPapers = new List<int>();
             foreach (Area area in areas)
             {
-                allPapers.Concat(area.Papers);
-            }
-            return allPapers;
-        }
-        public int GetCurrentIssue()
-        {
-            int number = 0;
-            foreach (Issue issue in Issues)
-            {
-                number = issue.Number;
-                if (issue.PublicationDate == null)
+                foreach (Paper paper in area.Papers)
                 {
-                    return number;
+                    allPapers.Add(paper.Id);
                 }
             }
-            return AddIssue(number+1).Number;
+            return allPapers;
         }
         public Issue AddIssue(int number)
         {
@@ -124,6 +115,15 @@ namespace Magazine.Entities
                 areas.Add(area.Id);
             }
             return areas;
+        }
+        public ICollection<int> GetListIssues()
+        {
+            ICollection<int> issues =new List<int>();
+            foreach(Issue issue in Issues)
+            {
+                issues.Add(issue.Id);
+            }
+            return issues;
         }
     }
 

@@ -67,10 +67,10 @@ namespace Magazine.Entities
             }
         }
 
-        public ICollection<int> GetPapers()
+        public ICollection<int> GetPapersPendingEvaluation()
         {
             ICollection<int> result = new List<int>();
-            foreach(Paper paper in Papers)
+            foreach(Paper paper in EvaluationPending)
             {
                 result.Add(paper.Id);
             }

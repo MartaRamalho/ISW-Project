@@ -68,11 +68,23 @@
     <Compile Include="ChiefEditorMenu.Designer.cs">
       <DependentUpon>ChiefEditorMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListPapers.cs">
+    <Compile Include="EvaluatePaper.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListPapers.Designer.cs">
-      <DependentUpon>ListPapers.cs</DependentUpon>
+    <Compile Include="EvaluatePaper.Designer.cs">
+      <DependentUpon>EvaluatePaper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuildIssue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuildIssue.Designer.cs">
+      <DependentUpon>BuildIssue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListPapersForEvaluation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListPapersForEvaluation.Designer.cs">
+      <DependentUpon>ListPapersForEvaluation.cs</DependentUpon>
     </Compile>
     <Compile Include="SubmitPaper.cs">
       <SubType>Form</SubType>
@@ -92,11 +104,11 @@
     <Compile Include="RegisterPerson.Designer.cs">
       <DependentUpon>RegisterPerson.cs</DependentUpon>
     </Compile>
-    <Compile Include="List Papers.cs">
+    <Compile Include="ListPapers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="List Papers.Designer.cs">
-      <DependentUpon>List Papers.cs</DependentUpon>
+    <Compile Include="ListPapers.Designer.cs">
+      <DependentUpon>ListPapers.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -124,14 +136,20 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ListPapers.resx">
-      <DependentUpon>ListPapers.cs</DependentUpon>
+    <EmbeddedResource Include="BuildIssue.resx">
+      <DependentUpon>BuildIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EvaluatePaper.resx">
+      <DependentUpon>EvaluatePaper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListPapersForEvaluation.resx">
+      <DependentUpon>ListPapersForEvaluation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubmitPaper.resx">
       <DependentUpon>SubmitPaper.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="List Papers.resx">
-      <DependentUpon>List Papers.cs</DependentUpon>
+    <EmbeddedResource Include="ListPapers.resx">
+      <DependentUpon>ListPapers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
