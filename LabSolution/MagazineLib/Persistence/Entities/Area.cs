@@ -66,5 +66,15 @@ namespace Magazine.Entities
                 PublicationPending.Add(paper);
             }
         }
+
+        public ICollection<int> GetPapers()
+        {
+            ICollection<int> result = new List<int>();
+            foreach(Paper paper in Papers)
+            {
+                result.Add(paper.Id);
+            }
+            return result;
+        }
     }
 }

@@ -52,7 +52,9 @@ namespace MagazineGUI
                 comboList = new List<ComboBox>();
                 Dictionary<string, string> persons = new Dictionary<string, string>();
                 List<string> list = service.GetListPeople();
-                foreach(string person in list)
+                List<string> people = new List<string>(list);
+                people.Remove(service.GetCurrentUserId());
+                foreach(string person in people)
                 {
                     persons.Add(person, service.GetFullName(person)+" - "+person);
                 }
@@ -137,7 +139,9 @@ namespace MagazineGUI
             {
                 Dictionary<string, string> persons = new Dictionary<string, string>();
                 List<string> list = service.GetListPeople();
-                foreach (string person in list)
+                List<string> people = new List<string>(list);
+                people.Remove(service.GetCurrentUserId());
+                foreach (string person in people)
                 {
                     persons.Add(person, service.GetFullName(person) + " - " + person);
                 }

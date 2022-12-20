@@ -32,6 +32,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.cancelButton = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubmissionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +45,7 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
             this.Title,
             this.Author,
             this.SubmissionDate});
@@ -68,13 +70,21 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "grid_Id";
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            this.Id.Width = 125;
+            // 
             // Title
             // 
             this.Title.DataPropertyName = "grid_Title";
             this.Title.HeaderText = "Title";
             this.Title.MinimumWidth = 6;
             this.Title.Name = "Title";
-            this.Title.ReadOnly = true;
             this.Title.Width = 125;
             // 
             // Author
@@ -83,7 +93,6 @@
             this.Author.HeaderText = "Author";
             this.Author.MinimumWidth = 6;
             this.Author.Name = "Author";
-            this.Author.ReadOnly = true;
             this.Author.Width = 125;
             // 
             // SubmissionDate
@@ -92,7 +101,6 @@
             this.SubmissionDate.HeaderText = "Submission Date";
             this.SubmissionDate.MinimumWidth = 6;
             this.SubmissionDate.Name = "SubmissionDate";
-            this.SubmissionDate.ReadOnly = true;
             this.SubmissionDate.Width = 125;
             // 
             // ListPapers
@@ -115,6 +123,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn Author;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubmissionDate;

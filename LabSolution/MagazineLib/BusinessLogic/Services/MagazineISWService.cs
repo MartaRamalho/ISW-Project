@@ -107,6 +107,12 @@ namespace Magazine.Services
             Commit();
         }
 
+        public string GetCurrentUserId()
+        {
+            ValidateLoggedUser(true);
+            return loggedUser.Id;
+        }
+
         public string Login(string login, string password) 
         {
             if(login=="" || password == "")
@@ -143,7 +149,7 @@ namespace Magazine.Services
             dal.Insert<Person>(new Person(id, name, surname));
             Commit();
         }
-
+        //returns a list of the people stored in the database
         public List<string> GetListPeople() {
             List<string> listPeople = new List<string>();
             List<Person> people = dal.GetAll<Person>().ToList();
@@ -168,6 +174,7 @@ namespace Magazine.Services
             Person person = dal.GetById<Person>(id);
             return person;
         }
+
         public void Logout()
         {
             ValidateLoggedUser(true);
@@ -183,9 +190,9 @@ namespace Magazine.Services
         {
             return loggedUser.Area != null;
         }
-        public Area GetEditorArea()
+        public int GetEditorArea()
         {
-            return loggedUser.Area;
+            return loggedUser.Area.Id;
         }
         
         
@@ -217,7 +224,15 @@ namespace Magazine.Services
             return submittedPapper.Id;
         }
 
-        
+        public void GetPaperById(int paperId, out string title, out DateTime date, out string user)
+        {
+            Paper paper = magazine.GetPaperById(paperId);
+            if(paper==null)
+                throw new ServiceException("This paper does not exist");
+            title = paper.Title;
+            date= paper.UploadDate;
+            user= GetFullName(paper.Responsible.Id);
+        }
         public void EvaluatePaper(bool accepted, string comments, DateTime date, int paperId)
         {
             if(comments==null || date==null)
@@ -374,19 +389,19 @@ namespace Magazine.Services
             return allPapers;
         }
 
-        public ICollection<Paper> ListPapersInArea(int idArea)
+        public ICollection<int> ListPapersInArea()
         {
             ValidateLoggedUser(true);
-            Area area = magazine.getAreaById(idArea);
-            if (area == null)
+            Area area = magazine.getAreaById(GetEditorArea());
+            if ( area == null)
             {
                 throw new ServiceException("Area not found");
             }
-            if (!IsAreaEditor() || !area.Equals(GetEditorArea()))
+            if (!IsAreaEditor())
             {
                 throw new ServiceException("User not allowed");
             }
-            return area.Papers;
+            return area.GetPapers();
         }
 
         public List<Person> ListAllAuthors(int paperId)

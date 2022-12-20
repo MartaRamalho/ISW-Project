@@ -60,6 +60,7 @@ namespace Magazine.Services
         bool IsChiefEditor();
         bool IsAreaEditor();
         Person GetPersonById(String id);
+        string GetCurrentUserId();
         #endregion
 
         #region Paper
@@ -135,6 +136,8 @@ namespace Magazine.Services
         ///             true if paper is Accepted, false otherwise
         /// </returns>
         bool isAccepted(int paperId);
+        ICollection<int> ListPapersInArea();
+        void GetPaperById(int paperId, out string title, out DateTime date, out string user);
 
         #endregion
 
@@ -165,6 +168,7 @@ namespace Magazine.Services
         int AddArea(string areaName, string editorId);
         ICollection<int> ListAllAreas();
         string GetAreaName(int id);
+        int GetEditorArea();
 
         #endregion
 
