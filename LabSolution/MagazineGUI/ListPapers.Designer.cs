@@ -37,8 +37,8 @@
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Authors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issuesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonClear = new System.Windows.Forms.Button();
+            this.issuesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.issuesBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -140,6 +140,7 @@
             this.buttonClear.TabIndex = 24;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // ListPapers
             // 

@@ -73,8 +73,6 @@ namespace Magazine.Services
             Login("fjaen", "1234");
             AddArea("HCI", "77777777B");
             AddArea("Software Engineering", "88888888C");
-            BuildIssue();
-            BuildIssue();
             Logout();
         }
 
@@ -433,6 +431,16 @@ namespace Magazine.Services
             }            return area.GetPapersPendingEvaluation();
         }
 
+        public ICollection<int> ListPapersInAreaPendingPublication(int areaId)
+        {
+            ValidateLoggedUser(true);
+            Area area = magazine.getAreaById(areaId);
+            if (area == null)
+            {
+                throw new ServiceException("Area not found");
+            }
+            return area.GetPapersPendingPublication();
+        }
 
 
         public ICollection<string> ListAllAuthors(int paperId)
@@ -463,17 +471,22 @@ namespace Magazine.Services
         }
 
         //To list papers that are published in an area
-        public ICollection<int> PublishedPapers(int areaId)
+        public ICollection<int> PublishedPapers(int areaId, int issueNum)
         {
             List<int> pubPapers = new List<int>();
             Area area = magazine.getAreaById(areaId);
+            Issue issue = magazine.GetIssueByNumber(issueNum);
             if (area == null)
             {
                 throw new ServiceException("Area not found");
             }
+            if (issue == null)
+            {
+                throw new ServiceException("Issue not found");
+            }
             foreach (Paper paper in area.Papers) 
             {
-                if (isPublishedPaper(paper.Id))
+                if (isPublishedPaper(paper.Id) && paper.Issue.Equals(issue))
                 { 
                     pubPapers.Add(paper.Id);
                 }
@@ -548,6 +561,28 @@ namespace Magazine.Services
             return magazine.GetListIssues();
         }
 
+        public void SaveIssue(int number, DateTime date)
+        {
+            ValidateLoggedUser(true);
+            if (!IsChiefEditor())
+            {
+                throw new ServiceException("User not allowed");
+            }
+            if (date == null)
+            {
+                throw new ServiceException("Invalid Date");
+            }
+            Issue issue = magazine.GetIssueByNumber(number);
+            if (issue.PublicationDate!=null)
+            {
+                throw new ServiceException("Issue already published");
+            }
+            else
+            {
+                magazine.PublishIssue(number, date);
+                Commit();
+            }
+        }
 
         #endregion
 
@@ -600,6 +635,16 @@ namespace Magazine.Services
         public ICollection<int> ListAllAreas()
         {
             return magazine.ListAreas();
+        }
+
+        public int GetAreaIdByName(string name)
+        {
+            Area area = magazine.GetAreaByName(name);
+            if (area == null)
+            {
+                throw new ServiceException("Area not found");
+            }
+            return area.Id;
         }
 
         #endregion

@@ -141,7 +141,8 @@ namespace Magazine.Services
         void GetPaperById(int paperId, out string title, out DateTime date, out string user);
         Paper GetPaperById(int paperId);
         bool isPublishedPaper(int paperId);
-        ICollection<int> PublishedPapers(int areaId);
+        ICollection<int> PublishedPapers(int areaId, int issueNum);
+        ICollection<int> ListPapersInAreaPendingPublication(int areaId);
         #endregion
 
         #region Issue
@@ -157,6 +158,7 @@ namespace Magazine.Services
         int BuildIssue();
         ICollection<int> ListAllIssues();
         ICollection<int> ListAllPapersByIssue(int idIssue);
+        void SaveIssue(int number, DateTime date);
         #endregion
 
         #region Area
@@ -174,7 +176,7 @@ namespace Magazine.Services
         ICollection<int> ListAllAreas();
         string GetAreaName(int id);
         int GetEditorArea();
-
+        int GetAreaIdByName(string name);
         #endregion
 
         #region Magazine

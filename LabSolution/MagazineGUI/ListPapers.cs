@@ -50,7 +50,7 @@ namespace MagazineGUI
                     string names = "";
                     foreach (string idPerson in service.ListAllAuthors(idPaper))
                     {
-                        names += service.GetFullName(idPerson) + "\n";
+                        names += service.GetFullName(idPerson) + "; ";
                     }
                     bindinglist.Add(new
                     {
@@ -81,23 +81,7 @@ namespace MagazineGUI
                     paperIds = service.ListAllPapers();
                 else
                     paperIds = service.ListAllPapersByIssue(id);
-                BindingList<object> bindinglist = new BindingList<object>();
-                foreach (int idPaper in paperIds)
-                {
-                    service.GetPaperById(idPaper, out string title, out DateTime date, out string responsible);
-                    string names = "";
-                    foreach (string idPerson in service.ListAllAuthors(idPaper))
-                    {
-                        names += (service.GetFullName(idPerson) + "; ");
-                    }
-                    bindinglist.Add(new
-                    {
-                        grid_Title = title,
-                        grid_Authors = names,
-                        grid_State = GetState(id),
-                    });
-                }
-                issuesBindingSource.DataSource = bindinglist;
+                LoadTable(paperIds);
             }
             catch(Exception ex)
             {
@@ -133,6 +117,14 @@ namespace MagazineGUI
         private void cancelButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            if(comboBoxIssue.SelectedIndex != -1)
+            {
+                comboBoxIssue.SelectedIndex = -1;
+            }
         }
     }
 }

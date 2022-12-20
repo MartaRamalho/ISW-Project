@@ -63,6 +63,15 @@ namespace Magazine.Entities
             return null;
         }
 
+        public Issue GetIssueByNumber(int number)
+        {
+            foreach (Issue issue in Issues)
+            {
+                if (issue.Number == number) return issue;
+            }
+            return null;
+        }
+
         public Area GetAreaByName(String name)
         {
             foreach (Area area in Areas)
@@ -124,6 +133,21 @@ namespace Magazine.Entities
                 issues.Add(issue.Id);
             }
             return issues;
+        }
+        public int PublishIssue(int number, DateTime date)
+        {
+            Issue issue = GetIssueByNumber(number);
+            if(issue == null)
+            {
+                Issue newIssue = new Issue(number, this);
+                newIssue.PublicationDate = date;
+                Issues.Add(issue);
+            }
+            else
+            {
+                issue.PublicationDate = date;
+            }
+            return issue.Number;
         }
     }
 
