@@ -116,11 +116,23 @@ namespace Magazine.Services
             throw new ServiceException("Login incorrect. Username or password may be wrong");            
         }
 
-        public void RegisterPerson(String id, String name, String surname)
+        public bool isRegisteredUser(String personId) 
         {
             List<Person> people = GetListPeople();
+            Person person =GetPersonById(personId);
+            foreach(Person p in people)
+            {
+                if (person.Id.Equals(p.Id) || (person.Name.Equals(p.Name) && person.Surname.Equals(p.Surname)) ) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public void RegisterPerson(String id, String name, String surname)
+        {
+            //List<Person> people = GetListPeople();
             Person person = GetPersonById(id);
-            if (person != null) {
+            if (person != null && !isRegisteredUser(id)) {  //Cambiar la comprobación de que exista la persona
                 throw new ServiceException("Person already registered");
             }
             //No user found with id, then we create the user and we push it to dal
