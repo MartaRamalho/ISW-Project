@@ -31,18 +31,25 @@ namespace MagazineGUI
         {
             service.Logout();
             this.Close();
-            new MagazineApp(service).Show();
+            Application.OpenForms["MagazineApp"].Show();
         }
 
         private void ExitClicked(object sender, EventArgs e)
         {
             service.Logout();
-            this.Close();
+            Application.Exit();
         }
 
         private void SubmitPaperClicked(object sender, EventArgs e)
         {
+            SubmitPaper submitPaper = new SubmitPaper(service);
+            submitPaper.Show();
+        }
 
+        private void OnMenuClosed(object sender, FormClosedEventArgs e)
+        {
+            service.Logout();
+            Application.Exit();
         }
     }
 }

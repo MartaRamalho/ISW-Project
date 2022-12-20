@@ -154,21 +154,18 @@ namespace Magazine.Services
             return listPeople;
         }
 
-        public string GetFullName(string personId)
+        public string GetFullName(string personId) 
         {
-            Person person = GetPersonById(personId);
-            if (person == null){
-                throw new ServiceException("Person does not exist.");
-            }
-            return person.GetFullName();
+                Person person = GetPersonById(personId);
+                if (person == null)
+                {
+                    throw new ServiceException("Person does not exist.");
+                }
+                return person.GetFullName();
         }
 
         public Person GetPersonById (String id) {
             Person person = dal.GetById<Person>(id);
-            if (person == null)
-            {
-                throw new ServiceException("Person does not exist.");
-            }
             return person;
         }
         public void Logout()
@@ -203,7 +200,7 @@ namespace Magazine.Services
             {
                 throw new ServiceException("Invalid Date.");
             }
-            if (title == null)
+            if (title == "")
             {
                 throw new ServiceException("Invalid Title.");
             }
@@ -212,16 +209,15 @@ namespace Magazine.Services
                 throw new ServiceException("Area not found.");
             }
             Paper submittedPapper = new Paper(title, uploadDate, area, loggedUser);
+            loggedUser.MainAuthoredPapers.Add(submittedPapper);
             submittedPapper.EvaluationPendingArea = area;
             area.AddPaper(submittedPapper);
+
             Commit();
             return submittedPapper.Id;
         }
 
         
-
-        
-        //fix nullpointer exception
         public void EvaluatePaper(bool accepted, string comments, DateTime date, int paperId)
         {
             if(comments==null || date==null)
@@ -257,9 +253,10 @@ namespace Magazine.Services
             return paper.EvaluationPendingArea != null;
         }
 
-        public void AddCoAuthors(Person person, int paperId)
+        public void AddCoAuthors(string personId, int paperId)
         {
             Paper paper = magazine.GetPaperById(paperId);
+            Person person = GetPersonById(personId);
             if(person == null)
             {
                 throw new ServiceException("Person not found");
@@ -269,11 +266,16 @@ namespace Magazine.Services
                 throw new ServiceException("Paper not found");
             }
             List<Person> coAuthors = paper.CoAuthors.ToList();
-            if (coAuthors.Count >= 4)
+            if (coAuthors.Count >= 5)
             {
                 throw new ServiceException("Maximum Number Of Co Authors Reached");
             }
+            if (coAuthors.Contains(person))
+            {
+                throw new ServiceException("Repeated Authors");
+            }
             coAuthors.Add(person);
+            person.CoAuthoredPapers.Add(paper);
             Commit();
         }
 
@@ -372,6 +374,21 @@ namespace Magazine.Services
             return allPapers;
         }
 
+        public ICollection<Paper> ListPapersInArea(int idArea)
+        {
+            ValidateLoggedUser(true);
+            Area area = magazine.getAreaById(idArea);
+            if (area == null)
+            {
+                throw new ServiceException("Area not found");
+            }
+            if (!IsAreaEditor() || !area.Equals(GetEditorArea()))
+            {
+                throw new ServiceException("User not allowed");
+            }
+            return area.Papers;
+        }
+
         public List<Person> ListAllAuthors(int paperId)
         {
             ValidateLoggedUser(true);
@@ -384,7 +401,7 @@ namespace Magazine.Services
             {
                 throw new ServiceException("Paper not found");
             }
-            return paper.AllAuthors();
+            return paper.CoAuthors.ToList<Person>();
         }
 
 
@@ -526,13 +543,13 @@ namespace Magazine.Services
             Commit();
             return area.Id;
         }
-        public int GetAreaIdByName(string name)
+        public string GetAreaName(int id)
         {
-            return magazine.GetAreaByName(name).Id;
+            return magazine.getAreaById(id).Name;
         }
-        public ICollection<string> ListAllAreas()
+        public ICollection<int> ListAllAreas()
         {
-            return magazine.ListAreasByName();
+            return magazine.ListAreas();
         }
         #endregion
 

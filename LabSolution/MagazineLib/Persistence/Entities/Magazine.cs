@@ -116,12 +116,12 @@ namespace Magazine.Entities
             Issues.Add(issue);
             return issue;
         }
-        public ICollection<String> ListAreasByName()
+        public ICollection<int> ListAreas()
         {
-            ICollection<String> areas = new List<String>();
+            ICollection<int> areas = new List<int>();
             foreach(Area area in Areas)
             {
-                areas.Add(area.Name);
+                areas.Add(area.Id);
             }
             return areas;
         }

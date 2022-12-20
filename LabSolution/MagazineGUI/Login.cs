@@ -36,7 +36,22 @@ namespace MagazineGUI
             try
             {
                 service.Login(username, password);
-                
+                if (service.IsChiefEditor())
+                {
+                    ChiefEditorMenu chiefMenu= new ChiefEditorMenu(service);
+                    chiefMenu.Show();
+                }
+                else if (service.IsAreaEditor())
+                {
+                    AreaEditorMenu areaEditorMenu= new AreaEditorMenu(service);
+                    areaEditorMenu.Show();
+                }
+                else 
+                {
+                    Menu menu = new Menu(service);
+                    menu.Show();
+                }
+                Application.OpenForms["MagazineApp"].Hide();
                 this.Close();
             }
             catch(Exception ex)

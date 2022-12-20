@@ -75,6 +75,7 @@ namespace Magazine.Entities
             get;
             set;
         }
+
         public void EvaluatePaper(bool accepted, string comments, DateTime date)
         {
             Evaluation = new Evaluation(accepted, comments, date);
@@ -101,13 +102,6 @@ namespace Magazine.Entities
         public bool isAccepted()
         {
             return Evaluation.Accepted;
-        }
-        public List<Person> AllAuthors()
-        {
-            List<Person> allAuthors = new List<Person>();
-            allAuthors.Add(Responsible);
-            allAuthors.Concat(CoAuthors);
-            return allAuthors;
         }
         
     }

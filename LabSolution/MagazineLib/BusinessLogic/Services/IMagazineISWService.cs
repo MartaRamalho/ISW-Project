@@ -53,10 +53,13 @@ namespace Magazine.Services
         /// </returns>
         void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password);
         void RegisterPerson(string id, string name, string surname);
-        void AddCoAuthors(Person person, int paperId);
+        void AddCoAuthors(string person, int paperId);
         List<Person> ListAllAuthors(int paperId);
         List<string> GetListPeople();
         string GetFullName(string id);
+        bool IsChiefEditor();
+        bool IsAreaEditor();
+        Person GetPersonById(String id);
         #endregion
 
         #region Paper
@@ -160,8 +163,8 @@ namespace Magazine.Services
         ///             Any required ServiceExceptions 
         /// </returns>
         int AddArea(string areaName, string editorId);
-        ICollection<String> ListAllAreas();
-        int GetAreaIdByName(string areaName);
+        ICollection<int> ListAllAreas();
+        string GetAreaName(int id);
 
         #endregion
 

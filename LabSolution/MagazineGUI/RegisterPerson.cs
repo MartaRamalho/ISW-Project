@@ -32,6 +32,10 @@ namespace MagazineGUI
             try
             {
                 service.RegisterPerson(id, name, surname);
+                MessageBox.Show("Person added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textBoxName.Clear();
+                textBoxSurname.Clear();
+                
             }
             catch(Exception ex)
             {

@@ -66,6 +66,5 @@ namespace Magazine.Entities
                 PublicationPending.Add(paper);
             }
         }
-        
     }
 }
