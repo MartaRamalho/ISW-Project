@@ -56,6 +56,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AreaEditorMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AreaEditorMenu.Designer.cs">
+      <DependentUpon>AreaEditorMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChiefEditorMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChiefEditorMenu.Designer.cs">
+      <DependentUpon>ChiefEditorMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListPapers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListPapers.Designer.cs">
+      <DependentUpon>ListPapers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubmitPaper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubmitPaper.Designer.cs">
+      <DependentUpon>SubmitPaper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MagazineISWFormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MagazineISWFormBase.Designer.cs">
+      <DependentUpon>MagazineISWFormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterPerson.Designer.cs">
+      <DependentUpon>RegisterPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="List Papers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,13 +110,13 @@
     <Compile Include="MagazineApp.Designer.cs">
       <DependentUpon>MagazineApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
+    <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="MainProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.cs">
       <SubType>Form</SubType>
@@ -88,6 +124,12 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ListPapers.resx">
+      <DependentUpon>ListPapers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubmitPaper.resx">
+      <DependentUpon>SubmitPaper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="List Papers.resx">
       <DependentUpon>List Papers.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,8 +139,11 @@
     <EmbeddedResource Include="MagazineApp.resx">
       <DependentUpon>MagazineApp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChiefEditorMenu.resx">
+      <DependentUpon>ChiefEditorMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -111,6 +156,12 @@
     </Compile>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AreaEditorMenu.resx">
+      <DependentUpon>AreaEditorMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterPerson.resx">
+      <DependentUpon>RegisterPerson.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -131,6 +182,9 @@
       <Project>{2dcda42d-e64e-4ca5-9d1e-33543854c43f}</Project>
       <Name>MagazineLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

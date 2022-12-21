@@ -11,26 +11,21 @@ using System.Windows.Forms;
 
 namespace MagazineGUI
 {
-    public partial class List_Papers : MagazineISWFormBase
+    public partial class AreaEditorMenu : Menu
     {
-        public List_Papers(IMagazineISWService service) : base(service)
+        public AreaEditorMenu() : base()
+        {
+            InitializeComponent();
+        }
+        public AreaEditorMenu(IMagazineISWService service):base(service)
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void EvaluatePaperClicked(object sender, EventArgs e)
         {
-
-        }
-
-        private void List_Papers_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
+            ListPapers listP = new ListPapers(service);
+            listP.ShowDialog();
         }
     }
 }

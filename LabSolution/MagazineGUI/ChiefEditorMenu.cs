@@ -11,24 +11,23 @@ using System.Windows.Forms;
 
 namespace MagazineGUI
 {
-    public partial class List_Papers : MagazineISWFormBase
+    public partial class ChiefEditorMenu : Menu
     {
-        public List_Papers(IMagazineISWService service) : base(service)
+        public ChiefEditorMenu():base()
+        {
+            InitializeComponent();
+        }
+        public ChiefEditorMenu(IMagazineISWService service) : base(service)
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void ListPapersClicked(object sender, EventArgs e)
         {
 
         }
 
-        private void List_Papers_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
+        private void BuildIssueClicked(object sender, EventArgs e)
         {
 
         }

@@ -9,34 +9,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace MagazineGUI
 {
-    public partial class MagazineApp : Form
+    public partial class MagazineApp : MagazineISWFormBase
     {
-        public MagazineApp()
+        public MagazineApp(IMagazineISWService service):base(service)
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void ClickedLogin(object sender, EventArgs e)
+        {
+            Login login = new Login(service);
+            login.ShowDialog();
+            
+        }
+
+        private void ClickedRegister(object sender, EventArgs e)
+        {
+            Register register = new Register(service);
+            register.ShowDialog();
+        }
+
+        private void MagazineApp_Load(object sender, EventArgs e)
         {
 
         }
 
-        private IMagazineISWService service;
-
-        public void MagazineApps(IMagazineISWService service)
-        {
-            InitializeComponent();
-            this.service = service;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void Help_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
         }

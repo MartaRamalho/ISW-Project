@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Magazine.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,21 +11,53 @@ using System.Windows.Forms;
 
 namespace MagazineGUI
 {
-    public partial class Login : Form
+    public partial class Login : MagazineISWFormBase
     {
-        public Login()
+        String username, password;
+        public Login(IMagazineISWService service) :base(service)
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Login_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ClickedCancel(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void LoginClicked(object sender, EventArgs e)
+        {
+            username=textBoxUsername.Text;
+            password=textBoxPassword.Text;
+            try
+            {
+                service.Login(username, password);
+                if (service.IsChiefEditor())
+                {
+                    ChiefEditorMenu chiefMenu= new ChiefEditorMenu(service);
+                    chiefMenu.Show();
+                }
+                else if (service.IsAreaEditor())
+                {
+                    AreaEditorMenu areaEditorMenu= new AreaEditorMenu(service);
+                    areaEditorMenu.Show();
+                }
+                else 
+                {
+                    Menu menu = new Menu(service);
+                    menu.Show();
+                }
+                Application.OpenForms["MagazineApp"].Hide();
+                this.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

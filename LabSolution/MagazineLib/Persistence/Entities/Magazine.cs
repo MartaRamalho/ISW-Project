@@ -1,10 +1,12 @@
 ﻿using Magazine.Persistence;
+using Magazine.Services;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -84,6 +86,44 @@ namespace Magazine.Entities
                 }
             }
             return null;
+        }
+        public List<Paper> ListAllPapers()
+        {
+            List<Area> areas = Areas.ToList();
+            List<Paper> allPapers = new List<Paper>();
+            foreach (Area area in areas)
+            {
+                allPapers.Concat(area.Papers);
+            }
+            return allPapers;
+        }
+        public int GetCurrentIssue()
+        {
+            int number = 0;
+            foreach (Issue issue in Issues)
+            {
+                number = issue.Number;
+                if (issue.PublicationDate == null)
+                {
+                    return number;
+                }
+            }
+            return AddIssue(number+1).Number;
+        }
+        public Issue AddIssue(int number)
+        {
+            Issue issue = new Issue(number, this);
+            Issues.Add(issue);
+            return issue;
+        }
+        public ICollection<int> ListAreas()
+        {
+            ICollection<int> areas = new List<int>();
+            foreach(Area area in Areas)
+            {
+                areas.Add(area.Id);
+            }
+            return areas;
         }
     }
 

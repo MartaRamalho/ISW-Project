@@ -19,15 +19,14 @@ namespace Magazine.Entities
             this.Title = title;
             this.UploadDate = uploadDate;
 
-            // person links
-            this.CoAuthors.Add(Responsible);
-
             // area links
             this.BelongingArea = belongingArea;
             
             // user links
             this.Responsible = responsible;
-            this.CoAuthors.Add(responsible);
+
+            // person links
+            this.CoAuthors.Add(Responsible);
         }
     }
 }

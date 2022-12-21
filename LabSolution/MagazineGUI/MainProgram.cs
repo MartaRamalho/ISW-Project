@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace MagazineGUI
 {
-    internal static class Program
+    internal static class MainProgram
     {
         /// <summary>
         /// Punto de entrada principal para la aplicación.
@@ -21,7 +21,7 @@ namespace MagazineGUI
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MagazineApp());
+            Application.Run(new MagazineApp(service));
         }
     }
 }

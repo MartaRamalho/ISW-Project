@@ -56,8 +56,25 @@ namespace Magazine.Entities
         public void AddPaper(Paper paper)
         {
             Papers.Add(paper);
+            EvaluationPending.Add(paper);
+        }
+        public void EvaluatePaper(Paper paper, bool accepted)
+        {
+            EvaluationPending.Remove(paper);
+            if (accepted)
+            {
+                PublicationPending.Add(paper);
+            }
         }
 
-        
+        public ICollection<int> GetPapers()
+        {
+            ICollection<int> result = new List<int>();
+            foreach(Paper paper in Papers)
+            {
+                result.Add(paper.Id);
+            }
+            return result;
+        }
     }
 }
