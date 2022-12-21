@@ -20,6 +20,7 @@ namespace MagazineGUI
         int idArea;
         string title;
         List<ComboBox> comboList;
+        Dictionary<string, string> persons;
         public SubmitPaper(IMagazineISWService service):base(service)
         {
             InitializeComponent();
@@ -138,7 +139,7 @@ namespace MagazineGUI
         {
             try
             {
-                Dictionary<string, string> persons = new Dictionary<string, string>();
+                persons = new Dictionary<string, string>();
                 List<string> list = service.GetListPeople();
                 List<string> people = new List<string>(list);
                 people.Remove(service.GetCurrentUserId());
@@ -185,7 +186,7 @@ namespace MagazineGUI
 
         private void comboBoxAuthor1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void comboBoxAuthor2_SelectedIndexChanged(object sender, EventArgs e)

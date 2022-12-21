@@ -37,8 +37,8 @@
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Authors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonClear = new System.Windows.Forms.Button();
             this.issuesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.buttonClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.issuesBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -90,6 +90,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
