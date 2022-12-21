@@ -428,7 +428,8 @@ namespace Magazine.Services
             if ( area == null)
             {
                 throw new ServiceException("Area not found");
-            }            return area.GetPapersPendingEvaluation();
+            }            
+            return area.GetPapersPendingEvaluation();
         }
 
         public ICollection<int> ListPapersInAreaPendingPublication(int areaId)
