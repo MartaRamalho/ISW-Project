@@ -37,5 +37,15 @@ namespace Magazine.Entities
             get;
             set;
         }
+
+        public ICollection<int> GetPapers()
+        {
+            ICollection<int> papers = new List<int>();
+            foreach (Paper paper in PublishedPapers)
+            {
+                papers.Add(paper.Id);
+            }
+            return papers;
+        }
     }
 }

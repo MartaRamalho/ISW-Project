@@ -62,6 +62,15 @@ namespace Magazine.Entities
             return null;
         }
 
+        public Issue GetIssueByNumber(int number)
+        {
+            foreach (Issue issue in Issues)
+            {
+                if (issue.Number == number) return issue;
+            }
+            return null;
+        }
+
         public Area GetAreaByName(String name)
         {
             foreach (Area area in Areas)
@@ -87,28 +96,18 @@ namespace Magazine.Entities
             }
             return null;
         }
-        public List<Paper> ListAllPapers()
+        public ICollection<int> ListAllPapers()
         {
-            List<Area> areas = Areas.ToList();
-            List<Paper> allPapers = new List<Paper>();
+            ICollection<Area> areas = Areas.ToList();
+            ICollection<int> allPapers = new List<int>();
             foreach (Area area in areas)
             {
-                allPapers.Concat(area.Papers);
-            }
-            return allPapers;
-        }
-        public int GetCurrentIssue()
-        {
-            int number = 0;
-            foreach (Issue issue in Issues)
-            {
-                number = issue.Number;
-                if (issue.PublicationDate == null)
+                foreach (Paper paper in area.Papers)
                 {
-                    return number;
+                    allPapers.Add(paper.Id);
                 }
             }
-            return AddIssue(number+1).Number;
+            return allPapers;
         }
         public Issue AddIssue(int number)
         {
@@ -119,11 +118,35 @@ namespace Magazine.Entities
         public ICollection<int> ListAreas()
         {
             ICollection<int> areas = new List<int>();
-            foreach(Area area in Areas)
+            foreach (Area area in Areas)
             {
                 areas.Add(area.Id);
             }
             return areas;
+        }
+        public ICollection<int> GetListIssues()
+        {
+            ICollection<int> issues = new List<int>();
+            foreach (Issue issue in Issues)
+            {
+                issues.Add(issue.Id);
+            }
+            return issues;
+        }
+        public int PublishIssue(int number, DateTime date)
+        {
+            Issue issue = GetIssueByNumber(number);
+            if (issue == null)
+            {
+                Issue newIssue = new Issue(number, this);
+                newIssue.PublicationDate = date;
+                Issues.Add(issue);
+            }
+            else
+            {
+                issue.PublicationDate = date;
+            }
+            return issue.Number;
         }
     }
 

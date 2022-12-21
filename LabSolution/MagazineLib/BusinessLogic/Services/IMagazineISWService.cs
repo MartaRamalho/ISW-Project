@@ -54,17 +54,18 @@ namespace Magazine.Services
         void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password);
         void RegisterPerson(string id, string name, string surname);
         void AddCoAuthors(string person, int paperId);
-        List<Person> ListAllAuthors(int paperId);
+        ICollection<string> ListAllAuthors(int paperId);
         List<string> GetListPeople();
         string GetFullName(string id);
         bool IsChiefEditor();
         bool IsAreaEditor();
+
         Person GetPersonById(String id);
         string GetCurrentUserId();
         #endregion
 
         #region Paper
-        List<Paper> ListAllPapers();
+        ICollection<int> ListAllPapers();
         /// <summary>   Validate data, if correct, register paper submission with logged user.</summary>
         /// <param>     <c>areaid</c> is the id of the area to which the paper is submitted. 
         /// </param>
@@ -136,9 +137,12 @@ namespace Magazine.Services
         ///             true if paper is Accepted, false otherwise
         /// </returns>
         bool isAccepted(int paperId);
-        ICollection<int> ListPapersInArea();
+        ICollection<int> ListPapersInAreaPendingEvaluation(int areaId);
         void GetPaperById(int paperId, out string title, out DateTime date, out string user);
-
+        Paper GetPaperById(int paperId);
+        bool isPublishedPaper(int paperId);
+        ICollection<int> PublishedPapers(int areaId, int issueNum);
+        ICollection<int> ListPapersInAreaPendingPublication(int areaId);
         #endregion
 
         #region Issue
@@ -152,6 +156,9 @@ namespace Magazine.Services
         /// </returns>
         int AddIssue(int number);
         int BuildIssue();
+        ICollection<int> ListAllIssues();
+        ICollection<int> ListAllPapersByIssue(int idIssue);
+        void SaveIssue(int number, DateTime date);
         #endregion
 
         #region Area
@@ -169,7 +176,7 @@ namespace Magazine.Services
         ICollection<int> ListAllAreas();
         string GetAreaName(int id);
         int GetEditorArea();
-
+        int GetAreaIdByName(string name);
         #endregion
 
         #region Magazine

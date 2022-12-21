@@ -80,11 +80,11 @@ namespace Magazine.Entities
         {
             Evaluation = new Evaluation(accepted, comments, date);
             EvaluationPendingArea.EvaluatePaper(this, accepted);
-            EvaluationPendingArea = null;
             if (accepted)
             {
                 PublicationPendingArea = EvaluationPendingArea;
             }
+            EvaluationPendingArea = null;
         }
         public void publishPaper()
         {
@@ -103,6 +103,15 @@ namespace Magazine.Entities
         {
             return Evaluation.Accepted;
         }
-        
+        public ICollection<string> AllAuthors()
+        {
+            ICollection<string> authors = new List<string>();
+            foreach (Person person in CoAuthors)
+            {
+                authors.Add(person.Id);
+            }
+            return authors;
+        }
+
     }
 }
