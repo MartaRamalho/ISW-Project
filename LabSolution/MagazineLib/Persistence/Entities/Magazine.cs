@@ -119,7 +119,7 @@ namespace Magazine.Entities
         public ICollection<int> ListAreas()
         {
             ICollection<int> areas = new List<int>();
-            foreach(Area area in Areas)
+            foreach (Area area in Areas)
             {
                 areas.Add(area.Id);
             }
