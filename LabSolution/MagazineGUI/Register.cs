@@ -18,7 +18,6 @@ namespace MagazineGUI
         public Register(IMagazineISWService service):base(service)
         {
             InitializeComponent();
-
         }
 
         private void CancelClicked(object sender, EventArgs e)
@@ -53,6 +52,7 @@ namespace MagazineGUI
             }
             
         }
+
         public string GenerateId()
         {
             int num = new Random().Next(10000000, 99999999);
