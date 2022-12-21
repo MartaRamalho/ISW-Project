@@ -41,7 +41,7 @@ namespace Magazine.Entities
         public ICollection<int> GetPapers()
         {
             ICollection<int> papers = new List<int>();
-            foreach (Paper paper in PublishedPapers)
+            foreach(Paper paper in PublishedPapers)
             {
                 papers.Add(paper.Id);
             }

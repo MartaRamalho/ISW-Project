@@ -93,10 +93,11 @@ namespace MagazineGUI
 
         private void SaveClicked(object sender, EventArgs e)
         {
-            idArea = (int)comboBoxArea.SelectedValue;
             title = textBoxTitle.Text;
             try
             {
+                if (comboBoxArea.SelectedValue == null) idArea = -1;
+                else idArea = (int)comboBoxArea.SelectedValue;
                 int id = service.SubmitPaper(idArea, title, DateTime.Today);
                 foreach(ComboBox comboBox in comboList)
                 {
@@ -180,10 +181,6 @@ namespace MagazineGUI
         {
             comboBox.SelectedIndex = -1;
             comboBox.ResetText();
-        }
-        private void deleteUsingAuthors(ComboBox comboBox)
-        {
-
         }
 
         private void comboBoxAuthor1_SelectedIndexChanged(object sender, EventArgs e)

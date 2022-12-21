@@ -24,12 +24,15 @@ namespace MagazineGUI
 
         private void ListPapersClicked(object sender, EventArgs e)
         {
+            ListPapers list = new ListPapers(service);
+            list.ShowDialog();
 
         }
 
         private void BuildIssueClicked(object sender, EventArgs e)
         {
-
+            BuildIssue build = new BuildIssue(service);
+            build.ShowDialog();
         }
     }
 }

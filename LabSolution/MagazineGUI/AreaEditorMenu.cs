@@ -24,7 +24,7 @@ namespace MagazineGUI
 
         private void EvaluatePaperClicked(object sender, EventArgs e)
         {
-            ListPapers listP = new ListPapers(service);
+            ListPapersForEvaluation listP = new ListPapersForEvaluation(service);
             listP.ShowDialog();
         }
     }

@@ -2,6 +2,7 @@
 using Magazine.Services;
 using Microsoft.Win32;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -126,8 +127,8 @@ namespace Magazine.Entities
         }
         public ICollection<int> GetListIssues()
         {
-            ICollection<int> issues = new List<int>();
-            foreach (Issue issue in Issues)
+            ICollection<int> issues =new List<int>();
+            foreach(Issue issue in Issues)
             {
                 issues.Add(issue.Id);
             }
@@ -136,7 +137,7 @@ namespace Magazine.Entities
         public int PublishIssue(int number, DateTime date)
         {
             Issue issue = GetIssueByNumber(number);
-            if (issue == null)
+            if(issue == null)
             {
                 Issue newIssue = new Issue(number, this);
                 newIssue.PublicationDate = date;

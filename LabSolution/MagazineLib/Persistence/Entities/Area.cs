@@ -70,7 +70,7 @@ namespace Magazine.Entities
         public ICollection<int> GetPapersPendingEvaluation()
         {
             ICollection<int> result = new List<int>();
-            foreach (Paper paper in EvaluationPending)
+            foreach(Paper paper in EvaluationPending)
             {
                 result.Add(paper.Id);
             }

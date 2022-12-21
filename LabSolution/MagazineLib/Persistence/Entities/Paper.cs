@@ -106,12 +106,11 @@ namespace Magazine.Entities
         public ICollection<string> AllAuthors()
         {
             ICollection<string> authors = new List<string>();
-            foreach (Person person in CoAuthors)
+            foreach(Person person in CoAuthors)
             {
                 authors.Add(person.Id);
             }
             return authors;
         }
-
     }
 }

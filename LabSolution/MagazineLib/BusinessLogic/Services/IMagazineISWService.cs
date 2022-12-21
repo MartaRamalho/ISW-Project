@@ -59,7 +59,7 @@ namespace Magazine.Services
         string GetFullName(string id);
         bool IsChiefEditor();
         bool IsAreaEditor();
-
+        
         Person GetPersonById(String id);
         string GetCurrentUserId();
         #endregion
