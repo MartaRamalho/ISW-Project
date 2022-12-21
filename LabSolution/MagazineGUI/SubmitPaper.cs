@@ -109,6 +109,12 @@ namespace MagazineGUI
                     }
                 }
                 MessageBox.Show("Paper Successfully Added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                comboBoxArea.SelectedIndex= -1;
+                textBoxTitle.Text = "";
+                comboBoxAuthor1.SelectedIndex = -1;
+                comboBoxAuthor2.SelectedIndex = -1;
+                comboBoxAuthor3.SelectedIndex = -1;
+                comboBoxAuthor4.SelectedIndex = -1;
             }
             catch(Exception ex)
             {
@@ -186,21 +192,65 @@ namespace MagazineGUI
 
         private void comboBoxAuthor1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (comboBoxAuthor1.SelectedItem != null)
+            {
+                foreach (ComboBox cBox in comboList)
+                {
+                    if (!cBox.Equals(comboBoxAuthor1) && cBox.SelectedItem != null && cBox.SelectedItem.Equals(comboBoxAuthor1.SelectedItem))
+                    {
+                        comboBoxAuthor1.SelectedIndex = -1;
+                        MessageBox.Show("Person already selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            
         }
 
         private void comboBoxAuthor2_SelectedIndexChanged(object sender, EventArgs e)
         {
+                if (comboBoxAuthor2.SelectedItem != null)
+                {
+                    foreach (ComboBox cBox in comboList)
+                    {
+                        if (!cBox.Equals(comboBoxAuthor2) && cBox.SelectedItem!= null && cBox.SelectedItem.Equals(comboBoxAuthor2.SelectedItem))
+                        {
+                            comboBoxAuthor2.SelectedIndex = -1;
+                            MessageBox.Show("Person already selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
             
         }
 
         private void comboBoxAuthor3_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            if (comboBoxAuthor2.SelectedItem != null)
+            {
+                foreach (ComboBox cBox in comboList)
+                {
+                    if (!cBox.Equals(comboBoxAuthor3) && cBox.SelectedItem != null && cBox.SelectedItem.Equals(comboBoxAuthor3.SelectedItem))
+                    {
+                        comboBoxAuthor3.SelectedIndex = -1;
+                        MessageBox.Show("Person already selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            
         }
 
         private void comboBoxAuthor4_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (comboBoxAuthor2.SelectedItem != null)
+            {
+                foreach (ComboBox cBox in comboList)
+                {
+                    if (!cBox.Equals(comboBoxAuthor4) && cBox.SelectedItem != null && cBox.SelectedItem.Equals(comboBoxAuthor4.SelectedItem))
+                    {
+                        comboBoxAuthor4.SelectedIndex = -1;
+                        MessageBox.Show("Person already selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
             
         }
     }
