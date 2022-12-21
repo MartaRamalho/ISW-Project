@@ -432,22 +432,6 @@ namespace Magazine.Services
         {
             ValidateLoggedUser(true);
             Area area = magazine.getAreaById(areaId);
-            if ( area == null)
-            {
-                throw new ServiceException("User not allowed");
-            }
-            Issue issue = magazine.GetIssueById(idIssue);
-            if (issue == null)
-            {
-                throw new ServiceException("Issue not found");
-            }
-            return issue.GetPapers();
-        }
-
-        public ICollection<int> ListPapersInAreaPendingEvaluation(int areaId)
-        {
-            ValidateLoggedUser(true);
-            Area area = magazine.getAreaById(areaId);
             if (area == null)
             {
                 throw new ServiceException("Area not found");
