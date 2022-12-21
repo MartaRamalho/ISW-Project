@@ -43,29 +43,30 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.checkBoxNotify = new System.Windows.Forms.CheckBox();
             this.textBoxFields = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
             this.labelName.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.Location = new System.Drawing.Point(101, 62);
+            this.labelName.Location = new System.Drawing.Point(89, 65);
             this.labelName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(64, 27);
+            this.labelName.Size = new System.Drawing.Size(77, 27);
             this.labelName.TabIndex = 0;
-            this.labelName.Text = "Name";
+            this.labelName.Text = "Name *";
             // 
             // labelSurname
             // 
             this.labelSurname.AutoSize = true;
             this.labelSurname.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSurname.Location = new System.Drawing.Point(77, 122);
+            this.labelSurname.Location = new System.Drawing.Point(63, 122);
             this.labelSurname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSurname.Name = "labelSurname";
-            this.labelSurname.Size = new System.Drawing.Size(89, 27);
+            this.labelSurname.Size = new System.Drawing.Size(102, 27);
             this.labelSurname.TabIndex = 1;
-            this.labelSurname.Text = "Surname";
+            this.labelSurname.Text = "Surname *";
             // 
             // textBoxName
             // 
@@ -98,12 +99,12 @@
             // 
             this.labelEmail.AutoSize = true;
             this.labelEmail.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmail.Location = new System.Drawing.Point(107, 183);
+            this.labelEmail.Location = new System.Drawing.Point(94, 180);
             this.labelEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(59, 27);
+            this.labelEmail.Size = new System.Drawing.Size(72, 27);
             this.labelEmail.TabIndex = 4;
-            this.labelEmail.Text = "Email";
+            this.labelEmail.Text = "Email *";
             // 
             // labelFields
             // 
@@ -139,23 +140,23 @@
             // 
             this.labelPassword.AutoSize = true;
             this.labelPassword.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPassword.Location = new System.Drawing.Point(71, 295);
+            this.labelPassword.Location = new System.Drawing.Point(58, 295);
             this.labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(94, 27);
+            this.labelPassword.Size = new System.Drawing.Size(107, 27);
             this.labelPassword.TabIndex = 9;
-            this.labelPassword.Text = "Password";
+            this.labelPassword.Text = "Password *";
             // 
             // labelUsername
             // 
             this.labelUsername.AutoSize = true;
             this.labelUsername.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUsername.Location = new System.Drawing.Point(67, 238);
+            this.labelUsername.Location = new System.Drawing.Point(54, 242);
             this.labelUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(99, 27);
+            this.labelUsername.Size = new System.Drawing.Size(112, 27);
             this.labelUsername.TabIndex = 8;
-            this.labelUsername.Text = "Username";
+            this.labelUsername.Text = "Username *";
             // 
             // registerButton
             // 
@@ -203,11 +204,23 @@
             this.textBoxFields.Size = new System.Drawing.Size(344, 201);
             this.textBoxFields.TabIndex = 19;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(14, 561);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(301, 22);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "All fields marked with * are mandatory";
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(786, 675);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxFields);
             this.Controls.Add(this.checkBoxNotify);
             this.Controls.Add(this.cancelButton);
@@ -249,5 +262,6 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.CheckBox checkBoxNotify;
         private System.Windows.Forms.TextBox textBoxFields;
+        private System.Windows.Forms.Label label1;
     }
 }

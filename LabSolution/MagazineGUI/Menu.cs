@@ -29,15 +29,31 @@ namespace MagazineGUI
 
         private void LogoutClicked(object sender, EventArgs e)
         {
-            service.Logout();
-            this.Close();
-            Application.OpenForms["MagazineApp"].Show();
+            try
+            {
+                service.Logout();
+                this.Close();
+                Application.OpenForms["MagazineApp"].Show();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void ExitClicked(object sender, EventArgs e)
         {
-            service.Logout();
-            Application.Exit();
+            try
+            {
+                service.Logout();
+                Application.Exit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void SubmitPaperClicked(object sender, EventArgs e)
@@ -48,8 +64,7 @@ namespace MagazineGUI
 
         private void OnMenuClosed(object sender, FormClosedEventArgs e)
         {
-            service.Logout();
-            Application.Exit();
+            
         }
     }
 }
