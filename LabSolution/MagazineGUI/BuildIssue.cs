@@ -144,22 +144,6 @@ namespace MagazineGUI
             }
         }
 
-        private void dataGridPending_SelectionChanged(object sender, EventArgs e)
-        {
-            
-                
-        }
-
-        private void dataGridPublished_SelectionChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void dataGridPending_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dataGridPending_Enter(object sender, EventArgs e)
         {
             if (dataGridPending.SelectedRows.Count == 1)
@@ -186,16 +170,6 @@ namespace MagazineGUI
                 buttonUnpublish.Enabled = false;
                 buttonPublish.Enabled = false;
             }
-        }
-
-        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

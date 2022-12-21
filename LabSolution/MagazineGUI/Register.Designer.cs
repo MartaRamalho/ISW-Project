@@ -239,7 +239,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Register";
             this.Text = "Register";
-            this.Load += new System.EventHandler(this.Register_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -31,15 +31,5 @@ namespace MagazineGUI
             Register register = new Register(service);
             register.ShowDialog();
         }
-
-        private void MagazineApp_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Help_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
     }
 }

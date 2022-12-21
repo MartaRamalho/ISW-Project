@@ -106,8 +106,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Menu";
             this.Text = "Menu";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OnMenuClosed);
-            this.Load += new System.EventHandler(this.Main_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Menu_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

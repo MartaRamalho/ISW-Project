@@ -135,11 +135,6 @@ namespace MagazineGUI
             Close();
         }
 
-        private void SubmitPaper_Load(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void OnFocusingForm(object sender, EventArgs e)
         {

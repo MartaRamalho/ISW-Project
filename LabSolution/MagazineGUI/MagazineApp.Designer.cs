@@ -30,7 +30,6 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.Help = new System.Windows.Forms.LinkLabel();
             this.labelTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -58,19 +57,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.ClickedLogin);
             // 
-            // Help
-            // 
-            this.Help.AutoSize = true;
-            this.Help.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Help.Location = new System.Drawing.Point(443, 423);
-            this.Help.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Help.Name = "Help";
-            this.Help.Size = new System.Drawing.Size(44, 20);
-            this.Help.TabIndex = 2;
-            this.Help.TabStop = true;
-            this.Help.Text = "Help";
-            this.Help.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Help_LinkClicked);
-            // 
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
@@ -85,15 +71,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(561, 489);
+            this.ClientSize = new System.Drawing.Size(561, 448);
             this.Controls.Add(this.labelTitle);
-            this.Controls.Add(this.Help);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MagazineApp";
             this.Text = "MagazineApp";
-            this.Load += new System.EventHandler(this.MagazineApp_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,7 +87,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.LinkLabel Help;
         private System.Windows.Forms.Label labelTitle;
     }
 }

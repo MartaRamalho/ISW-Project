@@ -34,11 +34,6 @@ namespace MagazineGUI
             issuesBindingSource.DataSource = null;
         }
 
-        private void List_Papers_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void LoadTable(ICollection<int> paperIds)
         {
             try

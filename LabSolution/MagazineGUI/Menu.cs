@@ -21,11 +21,6 @@ namespace MagazineGUI
         {
             InitializeComponent();
         }
-  
-        private void Main_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void LogoutClicked(object sender, EventArgs e)
         {
@@ -62,9 +57,9 @@ namespace MagazineGUI
             submitPaper.ShowDialog();
         }
 
-        private void OnMenuClosed(object sender, FormClosedEventArgs e)
+        private void Menu_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+            Application.Exit();
         }
     }
 }

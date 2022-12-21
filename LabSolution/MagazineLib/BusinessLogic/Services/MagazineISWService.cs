@@ -466,18 +466,6 @@ namespace Magazine.Services
             return paper.AllAuthors();
         }
 
-
-        //To list papers that are pending publication in an area
-        public List<Paper> PendingPublicationPapers(int areaId)
-        {
-            Area area = magazine.getAreaById(areaId);
-            if (area == null)
-            {
-                throw new ServiceException("Area not found");
-            }
-            return area.PublicationPending.ToList();
-        }
-
         //To list papers that are published in an area
         public ICollection<int> PublishedPapers(int areaId, int issueNum)
         {
@@ -501,16 +489,6 @@ namespace Magazine.Services
             }
             return pubPapers;
         }
-
-        public List<Paper> NoEvaluationPaper(Area area)
-        {
-            if (area == null)
-            {
-                throw new ServiceException("Area not found");
-            }
-            return area.EvaluationPending.ToList<Paper>();
-        }
-        //mover este metodo a la gui
         
 
         #endregion

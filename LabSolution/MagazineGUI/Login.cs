@@ -19,11 +19,6 @@ namespace MagazineGUI
             InitializeComponent();
         }
 
-        private void Login_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void ClickedCancel(object sender, EventArgs e)
         {
             this.Close();

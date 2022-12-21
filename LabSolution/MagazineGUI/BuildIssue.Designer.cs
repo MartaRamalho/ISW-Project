@@ -116,8 +116,6 @@
             this.dataGridPending.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridPending.Size = new System.Drawing.Size(346, 316);
             this.dataGridPending.TabIndex = 6;
-            this.dataGridPending.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPending_CellContentClick);
-            this.dataGridPending.SelectionChanged += new System.EventHandler(this.dataGridPending_SelectionChanged);
             this.dataGridPending.Enter += new System.EventHandler(this.dataGridPending_Enter);
             // 
             // Id
@@ -159,7 +157,6 @@
             this.dataGridPublished.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridPublished.Size = new System.Drawing.Size(346, 316);
             this.dataGridPublished.TabIndex = 7;
-            this.dataGridPublished.SelectionChanged += new System.EventHandler(this.dataGridPublished_SelectionChanged);
             this.dataGridPublished.Enter += new System.EventHandler(this.dataGridPublished_Enter);
             // 
             // dataGridViewTextBoxColumn1
@@ -257,7 +254,6 @@
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(253, 30);
             this.dateTimePicker.TabIndex = 28;
-            this.dateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             // 
             // label4
             // 
@@ -268,7 +264,6 @@
             this.label4.Size = new System.Drawing.Size(113, 25);
             this.label4.TabIndex = 29;
             this.label4.Text = "Select Date";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // BuildIssue
             // 

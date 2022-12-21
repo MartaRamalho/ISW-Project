@@ -158,7 +158,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ListPapers";
             this.Text = "ListPapers";
-            this.Load += new System.EventHandler(this.List_Papers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.issuesBindingSource)).EndInit();
             this.ResumeLayout(false);
