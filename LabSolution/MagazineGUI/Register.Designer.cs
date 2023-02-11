@@ -44,13 +44,15 @@
             this.checkBoxNotify = new System.Windows.Forms.CheckBox();
             this.textBoxFields = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBoxID = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
             this.labelName.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.Location = new System.Drawing.Point(89, 65);
+            this.labelName.Location = new System.Drawing.Point(124, 64);
             this.labelName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(77, 27);
@@ -61,7 +63,7 @@
             // 
             this.labelSurname.AutoSize = true;
             this.labelSurname.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSurname.Location = new System.Drawing.Point(63, 122);
+            this.labelSurname.Location = new System.Drawing.Point(98, 121);
             this.labelSurname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSurname.Name = "labelSurname";
             this.labelSurname.Size = new System.Drawing.Size(102, 27);
@@ -71,7 +73,7 @@
             // textBoxName
             // 
             this.textBoxName.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxName.Location = new System.Drawing.Point(193, 62);
+            this.textBoxName.Location = new System.Drawing.Point(228, 61);
             this.textBoxName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(344, 34);
@@ -80,7 +82,7 @@
             // textBoxSurname
             // 
             this.textBoxSurname.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSurname.Location = new System.Drawing.Point(193, 122);
+            this.textBoxSurname.Location = new System.Drawing.Point(228, 121);
             this.textBoxSurname.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSurname.Name = "textBoxSurname";
             this.textBoxSurname.Size = new System.Drawing.Size(344, 34);
@@ -89,7 +91,7 @@
             // textBoxEmail
             // 
             this.textBoxEmail.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEmail.Location = new System.Drawing.Point(193, 177);
+            this.textBoxEmail.Location = new System.Drawing.Point(228, 242);
             this.textBoxEmail.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(499, 34);
@@ -99,7 +101,7 @@
             // 
             this.labelEmail.AutoSize = true;
             this.labelEmail.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmail.Location = new System.Drawing.Point(94, 180);
+            this.labelEmail.Location = new System.Drawing.Point(129, 245);
             this.labelEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(72, 27);
@@ -110,7 +112,7 @@
             // 
             this.labelFields.AutoSize = true;
             this.labelFields.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFields.Location = new System.Drawing.Point(11, 347);
+            this.labelFields.Location = new System.Drawing.Point(46, 412);
             this.labelFields.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFields.Name = "labelFields";
             this.labelFields.Size = new System.Drawing.Size(155, 27);
@@ -120,7 +122,7 @@
             // textBoxPassword
             // 
             this.textBoxPassword.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPassword.Location = new System.Drawing.Point(193, 295);
+            this.textBoxPassword.Location = new System.Drawing.Point(228, 360);
             this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
@@ -130,7 +132,7 @@
             // textBoxUsername
             // 
             this.textBoxUsername.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUsername.Location = new System.Drawing.Point(193, 235);
+            this.textBoxUsername.Location = new System.Drawing.Point(228, 300);
             this.textBoxUsername.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(344, 34);
@@ -140,7 +142,7 @@
             // 
             this.labelPassword.AutoSize = true;
             this.labelPassword.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPassword.Location = new System.Drawing.Point(58, 295);
+            this.labelPassword.Location = new System.Drawing.Point(93, 360);
             this.labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(107, 27);
@@ -151,7 +153,7 @@
             // 
             this.labelUsername.AutoSize = true;
             this.labelUsername.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUsername.Location = new System.Drawing.Point(54, 242);
+            this.labelUsername.Location = new System.Drawing.Point(89, 307);
             this.labelUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.Size = new System.Drawing.Size(112, 27);
@@ -161,7 +163,7 @@
             // registerButton
             // 
             this.registerButton.Font = new System.Drawing.Font("Segoe UI Emoji", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerButton.Location = new System.Drawing.Point(616, 598);
+            this.registerButton.Location = new System.Drawing.Point(651, 663);
             this.registerButton.Margin = new System.Windows.Forms.Padding(4);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(133, 52);
@@ -173,7 +175,7 @@
             // cancelButton
             // 
             this.cancelButton.Font = new System.Drawing.Font("Segoe UI Emoji", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(453, 598);
+            this.cancelButton.Location = new System.Drawing.Point(488, 663);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(4);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(133, 52);
@@ -186,7 +188,7 @@
             // 
             this.checkBoxNotify.AutoSize = true;
             this.checkBoxNotify.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxNotify.Location = new System.Drawing.Point(18, 617);
+            this.checkBoxNotify.Location = new System.Drawing.Point(53, 682);
             this.checkBoxNotify.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxNotify.Name = "checkBoxNotify";
             this.checkBoxNotify.Size = new System.Drawing.Size(380, 24);
@@ -197,7 +199,7 @@
             // textBoxFields
             // 
             this.textBoxFields.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFields.Location = new System.Drawing.Point(193, 347);
+            this.textBoxFields.Location = new System.Drawing.Point(228, 412);
             this.textBoxFields.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxFields.Multiline = true;
             this.textBoxFields.Name = "textBoxFields";
@@ -208,18 +210,40 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Emoji", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 561);
+            this.label1.Location = new System.Drawing.Point(49, 626);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(301, 22);
             this.label1.TabIndex = 20;
             this.label1.Text = "All fields marked with * are mandatory";
             // 
+            // textBoxID
+            // 
+            this.textBoxID.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxID.Location = new System.Drawing.Point(228, 183);
+            this.textBoxID.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxID.Name = "textBoxID";
+            this.textBoxID.Size = new System.Drawing.Size(344, 34);
+            this.textBoxID.TabIndex = 22;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(156, 183);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 27);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "ID *";
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 675);
+            this.ClientSize = new System.Drawing.Size(828, 738);
+            this.Controls.Add(this.textBoxID);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxFields);
             this.Controls.Add(this.checkBoxNotify);
@@ -239,6 +263,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Register";
             this.Text = "Register";
+            this.Load += new System.EventHandler(this.Register_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,5 +287,7 @@
         private System.Windows.Forms.CheckBox checkBoxNotify;
         private System.Windows.Forms.TextBox textBoxFields;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxID;
+        private System.Windows.Forms.Label label2;
     }
 }

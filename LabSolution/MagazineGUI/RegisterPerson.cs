@@ -28,7 +28,7 @@ namespace MagazineGUI
         {
             name = textBoxName.Text;
             surname = textBoxSurname.Text;
-            id = GenerateId();
+            id = textBoxID.Text;
             try
             {
                 service.RegisterPerson(id, name, surname);
@@ -45,14 +45,6 @@ namespace MagazineGUI
                 }
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        public string GenerateId()
-        {
-            int num = new Random().Next(10000000, 99999999);
-            char letter = (char)('A' + new Random().Next(0, 26));
-            string DNI = num.ToString() + letter.ToString();
-            return DNI;
         }
     }
 }

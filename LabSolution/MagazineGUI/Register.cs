@@ -14,6 +14,12 @@ namespace MagazineGUI
     public partial class Register : MagazineISWFormBase
     {
         private string id, name, surname, email, username, password, fieldsOfInterest;
+
+        private void Register_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private bool notify;
         public Register(IMagazineISWService service):base(service)
         {
@@ -27,7 +33,7 @@ namespace MagazineGUI
 
         private void RegisterClicked(object sender, EventArgs e)
         {
-            id = GenerateId();
+            id = textBoxID.Text;
             name = textBoxName.Text;
             surname = textBoxSurname.Text;
             email = textBoxEmail.Text;
@@ -52,15 +58,6 @@ namespace MagazineGUI
             }
             
         }
-
-        public string GenerateId()
-        {
-            int num = new Random().Next(10000000, 99999999);
-            char letter = (char)('A' + new Random().Next(0, 26));
-            string DNI = num.ToString() + letter.ToString();
-            return DNI;
-        }
-
 
     }
 }
